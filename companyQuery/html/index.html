@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+</head>
+<body>
+    <div id="header" class="container-fluid">
+        <h2 id="title">企业信息查询系统</h2>
+        <ul class="nav">
+            <li><a href="#">首页</a></li>
+            <li><a href="#contact-us">联系我们</a></li>
+            <li><a href="#about-us">关于我们</a></li>
+        </ul>
+    </div>
+    <div id="content" class="container-fluid">
+        <div class="search-area">
+            <div class="form-group  text-center" id="form-search">
+                <form method="get" name="searchInfor" onsubmit="return false">
+                    <input type="text" class="input-lg" id="search-ipt"  placeholder="请输入企业关键信息">
+                    <button type="submit" class="btn btn-primary btn-lg">搜索</button>
+                </form>
+                
+            </div>
+        </div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="../img/timg.jpg" alt="图片1" width="100%" height="auto"></div>
+                <div class="swiper-slide"><img src="../img/timg (1).jpg" alt="图片2" width="100%" height="auto"></div>
+                <div class="swiper-slide"><img src="../img/indexBGImg2.png" alt="图片3" width="auto" height="100%"></div>
+            </div>
+        </div>
+        <div class="search-tabs">
+            <ul class="tab-list">
+                <li><a href="javascript:void(0)">按区域查公司</a></li>
+                <li><a href="javascript:void(0)">按行业查公司</a></li>
+                <li><a href="javascript:void(0)">热门公司</a></li>
+                <li><a href="javascript:void(0)">最新注册公司</a></li>
+                <li><a href="javascript:void(0)">最新认证公司</a></li>
+            </ul>
+            <div class="tab-inforArea right">
+                <h1>这是内容1</h1>
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="container-fluid">
+        <div id="foot-content">
+            <div id="about-us" class="foot-content-list">
+                <h5>关于我们</h5>
+                <ul>
+                    <li><a href="#">联系我们</a></li>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">友情链接</a></li>
+                    <li><a href="#">用户隐私权</a></li>
+                    <li><a href="#">更新记录</a></li>
+                </ul>
+            </div>
+            <div id="contact-us" class="foot-content-list">
+                <h5>联系我们</h5>
+                <ul>
+                    <li>地址：江西师范大学软件学院</li>
+                    <li>电话：15979093118</li>
+                    <li>QQ：1715288063</li>
+                    <li>微信：lxf1715288063</li>
+                    <li>邮箱：a1715288063@qq.com</li>
+                </ul>
+            </div>
+            <div id="data-sources" class="foot-content-list">
+                <h5>数据来源</h5>
+                <ul>
+                    <li><a href="https://www.qichacha.com/" target="_blank">企查查</a></li>
+                    <li><a href="https://www.tianyancha.com/" target="_blank">天眼查</a></li>
+                    <li><a href="http://www.cpbz.gov.cn/" target="_blank">企业标准信息公共服务平台</a></li>
+                    <li><a href="http://www.jxaic.gov.cn:81/sment/tentinfo/tqhcs" target="_blank">小微企业名录</a></li>
+                    <li><a href="http://www.kuyiso.com/" target="_blank">酷易搜</a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+</html>
