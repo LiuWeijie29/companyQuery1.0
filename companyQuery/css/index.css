@@ -102,21 +102,29 @@ a{
    display: inline-block;
 }
 .tab-list li{
-    margin: 20px auto;
+    margin: 0px auto;
+    padding: 20px 0px;
     /* background-color: #fff; */
-    text-align: center;
-    
+    text-align: center; 
 }
 .tab-list li a{
     text-decoration: none;
     color: #000;
 }
+.tab-list li:hover{
+    background-color:gray;
+}
 .tab-inforArea{
     margin-right: 9px;
     width: 80%;
     height: 100%;
-    /* background-color: blue; */
     display: inline-block;
+}
+.selected{
+    background-color: gray;
+}
+.hide{
+    display: none;
 }
 #foot-content{
     width: 80%;
