@@ -2,7 +2,7 @@
 use to learn Git tool
 
 1. mkdir myGit
-2. cd myGit
+2. cd myGit   --> git init
 3. git add filesName
   (use "git status" to see your git status)
 4. git commit -m "something you want to note" filesName
