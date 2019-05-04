@@ -85,8 +85,9 @@ a{
 
 
 /* 中间内容部分 */
-#content{
-    height: 1200px;
+.content{
+    height: auto;
+    min-height: 1200px;
 }
 #searchResult{
     margin: 20px auto;
@@ -95,38 +96,43 @@ a{
     height: 150px;
     background-color: #fff;
 }
-#inforBox{
+.inforBox{
     margin: 20px auto;
     padding: 20px;
     width: 80%;
     height: 200px;
     background-color: #fff;
 }
-#imgBox{
+.imgBox{
     height: 160px;
     width: 160px;
     background-color: #000;
     display: inline-block;
     float: left;
 }
-#titleInfor{
+.titleInfor{
     margin: 0px 20px;
     float: left;
 }
-#titleInfor h3{
+.titleInfor h3{
     margin-top: 0px;
     margin-bottom:20px; 
 }
-#titleInfor ul{
+.titleInfor ul{
     padding: 0px;
 }
-#titleInfor ul li{
+.titleInfor ul li{
     font-size: 18px;
     margin-bottom:5px;
     color:rgb(39,39,39);
 }
-
-
+.titleName:hover{
+    color: lightblue;
+    cursor: pointer;
+}
+#resultNumber{
+    color: red;
+}
 
 
 /*foot部分*/

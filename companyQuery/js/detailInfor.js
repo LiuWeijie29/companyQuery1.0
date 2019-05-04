@@ -1,4 +1,22 @@
+$(function(){
+    var id = $.query.get("id");
+    var url = "http://106.14.151.119:3000/api/findOne?id="+id;
+    //发送数据请求
+    $.get(url,function(data,status){
+        console.log(data);
+        addData(data);
+    });
+})
+function addData(data){
+    $('#titleInfor>h3').text(data[0].name);
+    $('#legalPersonName').text(data[0].legalPerson);
+    $('#registeredCapital').text(data[0].capital);
+    $('#address').text(data[0].address);
+    $('#RCapital').text(data[0].capital);
 
+
+
+}
 // //tab栏切换
 // $('.tab-list>.list-item').mouseenter(function(){
 //     $(this).addClass('selected').siblings('li').removeClass('selected');
