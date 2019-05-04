@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    
+    <title>首页</title>
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+
 </head>
 <body>
     <div id="header" class="container-fluid">
@@ -41,19 +40,13 @@
                 </div>
                 <form method="get" name="searchInfor" onsubmit="return false" id="form-search">
                     <input type="text" class="input-lg" id="search-ipt"  placeholder="请输入企业名称，如腾讯科技有限公司">
-                    <button type="submit" class="btn btn-primary btn-lg">
+                    <button type="submit" class="btn btn-primary btn-lg" id="searchBtn">
                         <img src="../img/搜索.png" alt="搜索" class="headerIcon">搜索
                     </button>
                 </form>
             </div>
         </div>
-        <!-- <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="../img/timg.jpg" alt="图片1" width="100%" height="auto"></div>
-                <div class="swiper-slide"><img src="../img/timg (1).jpg" alt="图片2" width="100%" height="auto"></div>
-                <div class="swiper-slide"><img src="../img/indexBGImg2.png" alt="图片3" width="auto" height="100%"></div>
-            </div>
-        </div> -->
+
         <div class="search-tabs">
             <ul class="tab-list">
                 <li class="list-item selected"><a href="javascript:void(0)">按区域查公司</a></li>
@@ -161,12 +154,14 @@
                     <li><a href="http://www.cpbz.gov.cn/" target="_blank">企业标准信息公共服务平台</a></li>
                     <li><a href="http://www.jxaic.gov.cn:81/sment/tentinfo/tqhcs" target="_blank">小微企业名录</a></li>
                     <li><a href="http://www.kuyiso.com/" target="_blank">酷易搜</a></li>
+                    <button onclick="window.location.href='../html/searchResult.html'+'?x=1'">跳转！</button>
                 </ul>
             </div>
         </div>
         
     </div>
     <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/jquery.params.js"></script>
     <script src="../js/index.js"></script>
 </body>
 </html>

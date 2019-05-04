@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>查询结果</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/searchResult.css">
+</head>
+<body>
+    <div id="header" class="container-fluid">
+        <h2 id="title">
+            <img src="../img/企业.png" alt="企业" class="headerIcon">企业信息查询系统
+        </h2>
+        <ul class="nav">
+            <li>
+                <a href="#"><img src="../img/主页.png" alt="主页" class="headerIcon">首页</a>
+            </li>
+            <li>
+                <a href="#contact-us"><img src="../img/联系.png" alt="联系我们" class="headerIcon">联系我们</a>
+            </li>
+            <li>
+                <a href="#about-us"><img src="../img/关于我们.png" alt="关于我们" class="headerIcon">关于我们</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div id="searchResult">
+        <h2>已为您查询到<span id="resultNumber"></span>条数据......</h2>
+    </div>
+    <div id="content" class="container-fluid">
+        <div id="inforBox" class="center">
+            <div id="imgBox">
+                <img src="../img/企业.png" width="160px" height="160px" alt="企业">
+            </div>
+            <div id="titleInfor">
+                <h3>深圳市腾讯科技有限公司</h3>
+                <ul>
+                    <li>法定代表人：<span id="legalPersonName">马化腾</span></li>
+                    <li>注册资本：<span id="registeredCapital">6500万人民币</span></li>
+                    <li>地址：<span id="address">深圳市南山区高新区高新南一路飞亚达大厦5-10楼</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- foot部分 -->
+    <div id="footer" class="container-fluid">
+        <div id="foot-content">
+            <div id="about-us" class="foot-content-list">
+                <h5>关于我们</h5>
+                <ul>
+                    <li><a href="#">联系我们</a></li>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">友情链接</a></li>
+                    <li><a href="#">用户隐私权</a></li>
+                    <li><a href="#">更新记录</a></li>
+                </ul>
+            </div>
+            <div id="contact-us" class="foot-content-list">
+                <h5>联系我们</h5>
+                <ul>
+                    <li>地址：江西师范大学软件学院</li>
+                    <li>电话：15979093118</li>
+                    <li>QQ：1715288063</li>
+                    <li>微信：lxf1715288063</li>
+                    <li>邮箱：a1715288063@qq.com</li>
+                </ul>
+            </div>
+            <div id="data-sources" class="foot-content-list">
+                <h5>数据来源</h5>
+                <ul>
+                    <li><a href="https://www.qichacha.com/" target="_blank">企查查</a></li>
+                    <li><a href="https://www.tianyancha.com/" target="_blank">天眼查</a></li>
+                    <li><a href="http://www.cpbz.gov.cn/" target="_blank">企业标准信息公共服务平台</a></li>
+                    <li><a href="http://www.jxaic.gov.cn:81/sment/tentinfo/tqhcs" target="_blank">小微企业名录</a></li>
+                    <li><a href="http://www.kuyiso.com/" target="_blank">酷易搜</a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/jquery.params.js"></script>
+    <script src="../js/searchResult.js"></script>
+</body>
+</html>

@@ -25,4 +25,13 @@ $('.searchLi>li').mouseenter(function(){
     }
 });
 
-
+$('#searchBtn').on('click',function(){
+    var name =  $('#search-ipt').val();
+    var url = '../html/searchResult.html?'+'name='+encodeURI(name);
+    location.href = url;
+})
+$('.cityList>li').on('click',function(){
+    var address = $(this).text();
+    var url = '../html/searchResult.html?'+'address='+encodeURI(address);
+    location.href = url;
+})
