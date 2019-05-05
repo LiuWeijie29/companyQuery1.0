@@ -4,7 +4,7 @@ body{
     background-color:rgb(39,39,39);
     background: url("../img/indexBGImg.jpg") no-repeat ;
     background-size:cover; 
-    min-width: 1200px;
+    min-width: 1280px;
 }
 li{
     list-style: none;
@@ -145,17 +145,20 @@ table tr td{
     line-height: 45px!important;
 }
 table .attr{
-    width: 200px;
+    width: 200px!important;
+}
+.contentTD{
+    width: 400px;
 }
 #businessScope,#dataSourse{
     
 }
 
 #mapBox{
-    background-color: #000;
+    
 }
 #atlasBox{
-    background-color: lavenderblush;
+    
 }
 .showBox{
     display: block;

@@ -25,10 +25,30 @@ $('.searchLi>li').mouseenter(function(){
     }
 });
 
+//搜索栏点击按钮，点击搜索
 $('#searchBtn').on('click',function(){
-    var name =  $('#search-ipt').val();
-    var url = '../html/searchResult.html?'+'name='+encodeURI(name);
-    location.href = url;
+    
+    // location.href = url;
+    //获取用户输入的内容
+    var words = $('#search-ipt').val();
+    //要跳转的带参地址
+    var url = '../html/searchResult.html?';
+    //判断用户要查询的类型，对应发送不同的请求
+    var searchType = $('.searchLi>li').filter('.seachSelected').index();
+    console.log(searchType);
+    switch(searchType){
+        case 0:location.href = url+'name='+encodeURI(words);
+        break;
+        case 1:location.href = url+''+encodeURI(words);
+        break;
+        case 2:location.href = url+'legalPerson='+encodeURI(words);
+        break;
+        case 3:location.href = url+'address='+encodeURI(words);
+        break;
+        case 4:location.href = url+'phone='+encodeURI(words);
+        break;
+    }
+
 })
 $('.cityList>li').on('click',function(){
     var address = $(this).text();

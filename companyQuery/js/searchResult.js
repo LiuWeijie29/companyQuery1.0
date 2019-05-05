@@ -2,17 +2,14 @@ var companyObj = new Object();//该对象存储name和id关键信息
 var resultNumber;//发送请求返回的数据条数
 var resultData;//请求到的数据
 $(function(){
+    //按企业名称搜索
     if($.query.get("name")!=''){
         //获取传递过来的name值
         var name = $.query.get("name");
         console.log("获取到的数据："+ name);
         //发送ajax请求申请数据
-
-    }
-    if($.query.get("address")!=''){
-        var address = $.query.get("address");
-        console.log("获取到的数据："+ address);
-        $.get("http://106.14.151.119:3000/api/search?address=瑶湖西",function(data,status){
+        var url = "http://106.14.151.119:3000/api/search?name="+name;
+        $.get(url,function(data,status){
             resultData = data;
             console.log(resultData);
             resultNumber = data[0]['数量'];//返回的结果数量
@@ -21,6 +18,56 @@ $(function(){
             addDataToList(resultData);//动态加载数据  
         })
     }
+    //按地址搜索
+    if($.query.get("address")!=''){
+        var address = $.query.get("address");
+        console.log("获取到的数据："+ address);
+        var url = "http://106.14.151.119:3000/api/search?address="+address;
+        $.get(url,function(data,status){
+            resultData = data;
+            console.log(resultData);
+            resultNumber = data[0]['数量'];//返回的结果数量
+            $('#resultNumber').text(resultNumber);
+            createList(resultNumber);//动态创建列表
+            addDataToList(resultData);//动态加载数据  
+        })
+    }
+    //按联系方式搜索
+    if($.query.get("phone")!=''){
+        //获取传递过来的phone值
+        var phone = $.query.get("phone");
+        console.log("获取到的数据："+ phone);
+        //发送ajax请求申请数据
+        var url = "http://106.14.151.119:3000/api/search?phone="+phone;
+        $.get(url,function(data,status){
+            resultData = data;
+            console.log(resultData);
+            resultNumber = data[0]['数量'];//返回的结果数量
+            $('#resultNumber').text(resultNumber);
+            createList(resultNumber);//动态创建列表
+            addDataToList(resultData);//动态加载数据  
+        })
+    }
+    //按法人股东名搜索
+    if($.query.get("legalPerson")!=''){
+        //获取传递过来的legalPerson值
+        var legalPerson = $.query.get("legalPerson");
+        console.log("获取到的数据："+ legalPerson);
+        //发送ajax请求申请数据
+        var url = "http://106.14.151.119:3000/api/search?legalPerson="+legalPerson;
+        $.get(url,function(data,status){
+            resultData = data;
+            console.log(resultData);
+            resultNumber = data[0]['数量'];//返回的结果数量
+            $('#resultNumber').text(resultNumber);
+            createList(resultNumber);//动态创建列表
+            addDataToList(resultData);//动态加载数据  
+        })
+    }
+    //按注册号搜索
+    // if($.query.get("")!=''){
+
+    // }
     
 });
 function createList(number){

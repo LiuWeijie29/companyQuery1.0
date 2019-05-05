@@ -8,46 +8,36 @@ $(function(){
     });
 })
 function addData(data){
-    $('#titleInfor>h3').text(data[0].name);
-    $('#legalPersonName').text(data[0].legalPerson);
-    $('#registeredCapital').text(data[0].capital);
-    $('#address').text(data[0].address);
-    $('#RCapital').text(data[0].capital);
-
-
-
+    $('#titleInfor>h3').text(data[0].name);//公司名称
+    $('#legalPersonName').text(data[0].legalPerson);//企业法人
+    $('#address').text(data[0].address);//地址
+    $('#registeredCapital').text(data[0].capital);//注册资本
+    $('#RCapital').text(data[0].capital);//实缴资本
+    $('#creditCode').text(data[0].creditCode);//注册号
+    $('#setupTime').text(data[0].setupTime);//成立日期
+    $('#scope').text(data[0].scope);//经营范围
+    $('#type').text(data[0].type);//公司类型
+    $('#province').text(data[0].province);//所属地区
+    $('#mail').text(data[0].mail);//邮箱
+    $('#phone').text(data[0].phone);//联系方式
+    $('#morePhone').text(data[0].morePhone);//更多联系方式
+    
 }
-// //tab栏切换
+//tab栏切换
 // $('.tab-list>.list-item').mouseenter(function(){
 //     $(this).addClass('selected').siblings('li').removeClass('selected');
 //     var index = $(this).index();
 //     $('.search-tabs>.tab-inforArea').eq(index).removeClass('hide').siblings('.tab-inforArea').addClass('hide');
 // });
 
-// //主页面搜索标签类切换
-// $('.searchLi>li').mouseenter(function(){
-//     $(this).addClass('seachSelected').siblings('li').removeClass('seachSelected');
-//     var index = $(this).index();
-//     var searchIpt = $('#search-ipt');
-//     switch(index){
-//         case 0:searchIpt.attr('placeholder','请输入企业名称，如腾讯科技有限公司');
-//         break;
-//         case 1:searchIpt.attr('placeholder','请输入企业注册号');
-//         break;
-//         case 2:searchIpt.attr('placeholder','请输入法人或股东的姓名');
-//         break;
-//         case 3:searchIpt.attr('placeholder','请输入企业地址');
-//         break;
-//         case 4:searchIpt.attr('placeholder','请输入企业电话或法人电话');
-//         break;
-//     }
-// });
+
 
 
 //三级页面搜索标签类切换
 $('#boxTabs>ul>li').click(function(){
     $(this).addClass('tabsSelect').siblings('li').removeClass('tabsSelect');
     var index = $(this).index();
-    
+    console.log(index);
+    $('.contentBox').eq(index).addClass('showBox').removeClass('hideBox').siblings('.contentBox').addClass('hideBox').removeClass('showBox');
 })
 
