@@ -2,7 +2,7 @@ body{
     margin: 0px;
     padding: 0px;
     background-color:rgb(39,39,39);
-    background: url("../img/indexBGImg.jpg") no-repeat ;
+    background: url("../img/1.jpg") no-repeat ;
     background-size:cover; 
     min-width: 1280px;
 }
@@ -58,7 +58,30 @@ a{
     background-color:rgb(139, 200,220);
     cursor: pointer;
 }
-
+#title{
+    margin-top:0px;
+    margin-bottom: 0px;
+    margin-left: 160px;
+    float: left;
+    font-size: 22px;
+    line-height: 55px;
+    cursor: pointer;
+}
+.nav{
+    margin-right: 140px;
+    float: right;
+    list-style: none;
+    font-size: 18px;
+}
+.nav li{
+    float: left;
+    margin: 5px 10px;
+    height: 100%;
+    
+}
+.nav li a{
+    color: #fff;
+}
 
 
 /* 中间内容部分 */
@@ -155,8 +178,32 @@ table .attr{
 }
 
 #mapBox{
-    
+    height: 100%;
+    width: 100%;
 }
+#notFindPos{
+    text-align: center;
+    line-height: 50px;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2;
+    border: white 1px solid;
+    border-radius: 3px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;/*opera或ie9*/
+    box-shadow: 1px 1px 2px 1px lightgray;
+    -moz-box-shadow:1px 1px 2px 1px lightgray;/*firebox*/
+    -webkit-box-shadow:1px 1px 2px 1px lightgray;/*webkit*/
+    background-color: lightblue;
+    cursor: default;
+}
+#notFindPos:hover{
+    color: #fff;
+}
+
 #atlasBox{
     
 }
@@ -173,29 +220,6 @@ table .attr{
 #footer{
     height: 300px;
     background-color: #000;
-}
-#title{
-    margin-top:0px;
-    margin-bottom: 0px;
-    margin-left: 160px;
-    float: left;
-    font-size: 22px;
-    line-height: 55px;
-}
-.nav{
-    margin-right: 140px;
-    float: right;
-    list-style: none;
-    font-size: 18px;
-}
-.nav li{
-    float: left;
-    margin: 5px 10px;
-    height: 100%;
-    
-}
-.nav li a{
-    color: #fff;
 }
 
 

@@ -9,13 +9,19 @@
     <link rel="stylesheet" type="text/css" href="../css/searchResult.css">
 </head>
 <body>
-    <div id="header" class="container-fluid">
-        <h2 id="title">
+    <div id="header" class="container-fluid" >
+        <h2 id="title" onclick="javascript:location.href = '../html/index.html'">
             <img src="../img/企业.png" alt="企业" class="headerIcon">企业信息查询系统
         </h2>
+        <form class="form-inline" id="headerForm">
+            <div class="input-group" style="width:250px;">
+                <input type="text" class="form-control" id="exampleInputAmount" placeholder="输入企业关键信息" >
+                <div class="input-group-addon" id="headerSearch" ><img src="../img/搜索.png" width="20px" height="20px" alt="搜索"></div>
+            </div>
+        </form>
         <ul class="nav">
             <li>
-                <a href="#"><img src="../img/主页.png" alt="主页" class="headerIcon">首页</a>
+                <a href="../html/index.html"><img src="../img/主页.png" alt="主页" class="headerIcon">首页</a>
             </li>
             <li>
                 <a href="#contact-us"><img src="../img/联系.png" alt="联系我们" class="headerIcon">联系我们</a>

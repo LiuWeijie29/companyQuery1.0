@@ -12,7 +12,7 @@
 </head>
 <body>
     <div id="header" class="container-fluid">
-        <h2 id="title">
+        <h2 id="title" onclick="javascript:location.href = '../html/index.html'">
             <img src="../img/企业.png" alt="企业" class="headerIcon">企业信息查询系统
         </h2>
         <form class="form-inline" id="headerForm">
@@ -23,7 +23,7 @@
         </form>
         <ul class="nav">
             <li>
-                <a href="#"><img src="../img/主页.png" alt="主页" class="headerIcon">首页</a>
+                <a href="../html/index.html"><img src="../img/主页.png" alt="主页" class="headerIcon">首页</a>
             </li>
             <li>
                 <a href="#contact-us"><img src="../img/联系.png" alt="联系我们" class="headerIcon">联系我们</a>
@@ -77,13 +77,13 @@
                     </tr>
                     <tr>
                         <td class="info attr">统一社会信用代码</td>
-                        <td class="contentTD"></td>
+                        <td id="creditCode" class="contentTD"></td>
                         <td class="info attr">纳税人识别号</td>
                         <td class="contentTD"></td>
                     </tr>
                     <tr>
                         <td class="info attr">注册号</td>
-                        <td id="creditCode" class="contentTD"></td>
+                        <td  class="contentTD"></td>
                         <td class="info attr">组织机构代码</td>
                         <td class="contentTD"></td>
                     </tr>
@@ -117,8 +117,8 @@
                     </tr>
                 </table>
             </div>
-            <div id="mapBox" class="hideBox contentBox">
-                这里是地图界面
+            <div id="mapBox" class="hideBox contentBox" title="定位不到企业位置？点击重新加载">
+                <div id="notFindPos" ><b>？</b></div>
             </div>
             <div id="atlasBox" class="hideBox contentBox">
                 这里是图谱界面
@@ -162,6 +162,7 @@
     </div>
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/jquery.params.js"></script>
+    <script src="https://webapi.amap.com/maps?v=1.4.14&key=be44caee7bd64ca39c85116195e2d3a3&plugin=AMap.Geocoder"></script>
     <script src="../js/detailInfor.js"></script>
 </body>
 </html>

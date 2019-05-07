@@ -64,15 +64,46 @@ $(function(){
             addDataToList(resultData);//动态加载数据  
         })
     }
-    //按注册号搜索
-    // if($.query.get("")!=''){
-
-    // }
+    //按统一社会信用代码搜索
+    if($.query.get("creditCode")!=''){
+        //获取传递过来的creditCode值
+        var creditCode = $.query.get("creditCode");
+        console.log("获取到的数据："+ creditCode);
+        //发送ajax请求申请数据
+        var url = "http://106.14.151.119:3000/api/search?creditCode="+creditCode;
+        $.get(url,function(data,status){
+            resultData = data;
+            console.log(resultData);
+            resultNumber = data[0]['数量'];//返回的结果数量
+            $('#resultNumber').text(resultNumber);
+            createList(resultNumber);//动态创建列表
+            addDataToList(resultData);//动态加载数据  
+        })
+    }
+    //按行业搜索
+    if($.query.get("scope")!=''){
+        //获取传递过来的name值
+        var scope = $.query.get("name");
+        console.log("获取到的数据："+ scope);
+        //发送ajax请求申请数据
+        var url = "http://106.14.151.119:3000/api/search?scope="+scope;
+        $.get(url,function(data,status){
+            resultData = data;
+            console.log(resultData);
+            resultNumber = data[0]['数量'];//返回的结果数量
+            $('#resultNumber').text(resultNumber);
+            createList(resultNumber);//动态创建列表
+            addDataToList(resultData);//动态加载数据  
+        })
+    }
     
 });
 function createList(number){
     if(number>10){
         //显示翻页框
+
+
+        
     }
     //生成列表
     for(var i = 0;i<number;i++){

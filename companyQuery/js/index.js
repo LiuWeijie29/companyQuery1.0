@@ -1,20 +1,20 @@
 
 //tab栏切换
-$('.tab-list>.list-item').mouseenter(function(){
+$('.tab-list>.list-item').click(function(){
     $(this).addClass('selected').siblings('li').removeClass('selected');
     var index = $(this).index();
     $('.search-tabs>.tab-inforArea').eq(index).removeClass('hide').siblings('.tab-inforArea').addClass('hide');
 });
 
 //主页面搜索标签类切换
-$('.searchLi>li').mouseenter(function(){
+$('.searchLi>li').click(function(){
     $(this).addClass('seachSelected').siblings('li').removeClass('seachSelected');
     var index = $(this).index();
     var searchIpt = $('#search-ipt');
     switch(index){
         case 0:searchIpt.attr('placeholder','请输入企业名称，如腾讯科技有限公司');
         break;
-        case 1:searchIpt.attr('placeholder','请输入企业注册号');
+        case 1:searchIpt.attr('placeholder','请输入企业统一社会信用代码');
         break;
         case 2:searchIpt.attr('placeholder','请输入法人或股东的姓名');
         break;
@@ -39,7 +39,7 @@ $('#searchBtn').on('click',function(){
     switch(searchType){
         case 0:location.href = url+'name='+encodeURI(words);
         break;
-        case 1:location.href = url+''+encodeURI(words);
+        case 1:location.href = url+'creditCode='+encodeURI(words);
         break;
         case 2:location.href = url+'legalPerson='+encodeURI(words);
         break;
@@ -50,8 +50,17 @@ $('#searchBtn').on('click',function(){
     }
 
 })
+
+//tab栏 按区域查询 点击传递城市
 $('.cityList>li').on('click',function(){
     var address = $(this).text();
     var url = '../html/searchResult.html?'+'address='+encodeURI(address);
     location.href = url;
+
+})
+$('.industryList>li').on('click',function(){
+    var scope = $(this).text();
+    var url = '../html/searchResult.html?'+'scope='+encodeURI(scope);
+    location.href = url;
+
 })
