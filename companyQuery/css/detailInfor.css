@@ -17,6 +17,7 @@ li{
 }
 center{
     margin: 0 auto;
+
 }
 h5{
     color: white;
@@ -86,7 +87,8 @@ a{
 
 /* 中间内容部分 */
 #content{
-    height: 1200px;
+    height: auto;
+    min-height: 1100px;
 }
 #inforBoxHeader{
     margin: 20px auto;
@@ -124,7 +126,7 @@ a{
     margin: 0 auto;
     padding: 0px;
     width: 80%;
-    height: 900px;
+    height: auto;
     background-color: #fff;
 }
 #boxTabs{
@@ -178,7 +180,7 @@ table .attr{
 }
 
 #mapBox{
-    height: 100%;
+    height: 800px;
     width: 100%;
 }
 #notFindPos{
@@ -205,7 +207,13 @@ table .attr{
 }
 
 #atlasBox{
-    
+    height: 800px;
+    width: 100%;
+}
+#dataView{
+    height: 750px;
+    width: 1250px;
+    margin: 0 auto;
 }
 .showBox{
     display: block;

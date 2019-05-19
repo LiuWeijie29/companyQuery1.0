@@ -26,7 +26,7 @@
                 <a href="../html/index.html"><img src="../img/主页.png" alt="主页" class="headerIcon">首页</a>
             </li>
             <li>
-                <a href="#contact-us"><img src="../img/联系.png" alt="联系我们" class="headerIcon">联系我们</a>
+                <a href="./dataView.html"><img src="../img/联系.png" alt="数据可视操作" class="headerIcon">数据可视操作</a>
             </li>
             <li>
                 <a href="#about-us"><img src="../img/关于我们.png" alt="关于我们" class="headerIcon">关于我们</a>
@@ -52,7 +52,7 @@
                 <ul>
                     <li class="left tabsSelect" >基本信息</li>
                     <li class="left">地图</li>
-                    <li class="left">企业图谱</li>
+                    <li class="left" onclick="dataViewShow()">企业图谱</li>
                 </ul>
             </div>
             <div id="basicBox" class="inforBox showBox contentBox">
@@ -121,7 +121,18 @@
                 <div id="notFindPos" ><b>？</b></div>
             </div>
             <div id="atlasBox" class="hideBox contentBox">
-                这里是图谱界面
+                <div id="dataView"></div>
+                <!-- <div class="swiper-container" style="width:100%;height:800px">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><div id="dataView"></div></div>
+                        <div class="swiper-slide">Slide 2</div>
+                        <div class="swiper-slide">Slide 3</div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    
+                </div> -->
             </div>
         </div>
     </div>    
@@ -162,7 +173,9 @@
     </div>
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/jquery.params.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
     <script src="https://webapi.amap.com/maps?v=1.4.14&key=be44caee7bd64ca39c85116195e2d3a3&plugin=AMap.Geocoder"></script>
+    <script src="https://cdn.bootcss.com/echarts/3.0.0/echarts.min.js"></script>
     <script src="../js/detailInfor.js"></script>
 </body>
 </html>

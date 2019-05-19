@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>查询结果</title>
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/searchResult.css">
+    <link rel="stylesheet" type="text/css" href="../css/dataView.css">
 </head>
 <body>
     <div id="header" class="container-fluid" >
@@ -24,7 +24,7 @@
                 <a href="../html/index.html"><img src="../img/主页.png" alt="主页" class="headerIcon">首页</a>
             </li>
             <li>
-                <a href="./dataView.html"><img src="../img/联系.png" alt="数据可视操作" class="headerIcon">数据可视操作</a>
+                    <a href="./dataView.html"><img src="../img/联系.png" alt="数据可视操作" class="headerIcon">数据可视操作</a>
             </li>
             <li>
                 <a href="#about-us"><img src="../img/关于我们.png" alt="关于我们" class="headerIcon">关于我们</a>
@@ -32,33 +32,21 @@
         </ul>
     </div>
 
-
-    <div id="searchResult">
-        <h2>已为您查询到<span id="resultNumber"></span>条数据......</h2>
-    </div>
-    <div  class='container-fluid content' id="inforListContainer">
-<!--         
-        <div  class='inforBox center '>
-            <div class='imgBox'>
-                <img src='../img/企业.png' width='160px' height='160px' alt='企业'>
-            </div>
-            <div class='titleInfor'>
-                <h3 >深圳市腾讯科技有限公司</h3>
-                <ul>
-                    <li>法定代表人：<span class='legalPersonName'>马化腾</span></li>
-                    <li>注册资本：<span class='registeredCapital'>6500万人民币</span></li>
-                    <li>地址：<span class='address'>深圳市南山区高新区高新南一路飞亚达大厦5-10楼</span></li>
+    <div class="content">
+        <div id="dataViewContainer">
+            <div id="viewHeader"><h3>数据可视化界面</h3></div>
+            <div id="tabMenu">
+                <ul class="nav nav-pills nav-stacked">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
                 </ul>
             </div>
+            <div id="tableView"></div>
         </div>
- -->
     </div>
-
-
-
-
-
-
+    
 
 
     <!-- foot部分 -->
@@ -99,6 +87,7 @@
     </div>
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/jquery.params.js"></script>
-    <script src="../js/searchResult.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/3.0.0/echarts.min.js"></script>
+    <script src="../js/dataView.js"></script>
 </body>
 </html>

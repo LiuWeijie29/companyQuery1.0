@@ -7,27 +7,44 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- <script>
-        function success(data){
-            console.log(data);
-        }
-        
-        var xhr =  new XMLHttpRequest();//新建XMLHttpRequest对象
-        xhr.onreadystatechange = ()=>{
-            if(xhr.readyState === 4 && xhr.status === 200){
-                console.log(xhr.responseText);
-                success(xhr.responseText);
-            }else{
-                
-            }
-        }
-        xhr.open('GET','http://106.14.151.119:3000/api/test');
-        xhr.send('hahahhah');   
-
-
-    </script> -->
+    <body>
+        <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+        <div id="main" style="width: 600px;height:400px;"></div>
+        <div id="main2" style="width: 600px;height:400px;"></div>
+    </body>
+    <script src="https://cdn.bootcss.com/echarts/3.0.0/echarts.min.js"></script>
     <script>
-        document.write(window.location.href);
+        // console.log(echarts);
+        var mychart = echarts.init(document.getElementById('main'));
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '行业分类'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        mychart.setOption(option);
+        mychart.on('click',function(e){
+            console.log(e.value)
+        })
+
+    </script>
+    <script>
+
     </script>
 </body>
 </html>
