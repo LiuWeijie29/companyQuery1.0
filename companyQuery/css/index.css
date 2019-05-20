@@ -43,6 +43,7 @@ a{
 }
 #content{
     height: 1300px;
+
 }
 #footer{
     height: 300px;
@@ -180,7 +181,7 @@ a{
 
 
 
-
+/* foot */
 
 #foot-content{
     width: 80%;
@@ -188,29 +189,19 @@ a{
     margin: 12px auto;
     color: lightslategray;
 }
-.foot-content-list{
-    width: 170px;
-    height: 100%;
-    padding: 8px;
-    margin-right: 20px;
+#dataSource h5{
     text-align: left;
-    float: left;
+    margin: 6px 0px;
 }
-.foot-content-list a{
-    text-decoration: none;
-    color:lightslategray;
+#dataSource ul{
+    padding-left: 0px;
+    padding-right: 150px;
 }
-.foot-content-list ul{
-    padding-left:0px;
-}
-.foot-content-list li{
+#dataSource ul li{
     text-align: left;
-    margin: 5px 0;
+    margin: 6px 0px;
 }
-#contact-us{
-    width: 200px;
+#dataSource ul li a{
+    text-decoration: none
 }
-#data-sources{
-    width: 200px;
-    margin-left: 20px;
-}
+

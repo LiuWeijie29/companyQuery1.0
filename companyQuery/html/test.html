@@ -44,7 +44,11 @@
 
     </script>
     <script>
-
+        function requestName(paramType,param,pageIndex){
+            var url = "http://106.14.151.119:3000/api/search?"+paramType+"="+param+"&page="+pageIndex;
+            console.log(url);
+        }
+        window.onload = requestName('name','王世和',1);
     </script>
 </body>
 </html>
