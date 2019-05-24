@@ -1,5 +1,6 @@
 var company = {};
 var mychart;
+var mainCompanyPoint;//主公司的高德地图坐标
 $(function(){
     var id  = $.query.get("id");
     var url = "http://106.14.151.119:3000/api/findOne?id="+id;
@@ -35,7 +36,6 @@ function addData(data){
     company.mail              = data[0].mail;
     company.phone             = data[0].phone;
     company.morePhone         = data[0].morePhone;
-
 }
 
 
@@ -62,7 +62,7 @@ $('#boxTabs>ul>li').eq(1).on('click',function(){
     getAddressLocation(company.address);//以企业地址为依据定位
     var inforWindow;//信息窗格
 
-    function inforShow(marker){
+    function inforShow(marker,company){
         var info = [];
         info.push("<div class='input-card content-window-card'><div><img style=\"float:left;\" src=\" https://webapi.amap.com/images/autonavi.png \"/></div> ");
         info.push("<div style=\"padding:7px 0px 0px 0px;\"><h4>"+company.name+"</h4>");
@@ -72,8 +72,10 @@ $('#boxTabs>ul>li').eq(1).on('click',function(){
         info.push("<p class='input-item'>成立日期 :"+ company.data);
         info.push("<p class='input-item'>注册资本 :"+ company.capital);
         info.push("<p class='input-item'>地址 :"+company.address+"</p>");
-        info.push("<p class='input-item'>经营范围 :"+company.scope+"</p></div></div>");
-
+        info.push("<p class='input-item'>经营范围 :"+company.scope+"</p>");
+        var url = "../html/searchResult.html?name="+company.name;
+        // var url = "../html/detailInfor.html?id="+company.id;
+        info.push("<p class='input-item'><a id='inforBoxToFind' href='"+url+"' target='blank'>查询该公司</a></p></div></div>");
         inforWindow = new AMap.InfoWindow({
             //设置位置锚点
             anchor : 'bottom-left',
@@ -82,15 +84,18 @@ $('#boxTabs>ul>li').eq(1).on('click',function(){
 
         inforWindow.open(map,marker.getPosition());
     }
+    //如果点击了信息窗格中的“查询该公司”，则跳转到该公司的页面
+    
      //加载地图后标记到定位点。将企业的名称转化为地图坐标并定位
+    //异步函数
      function getAddressLocation(name){
         var geocoder = new AMap.Geocoder();
         geocoder.getLocation(name,function(status,result){
             if(status === 'complete'&&result.geocodes.length){
                 console.log("地址转化成功："+result);
                 var point = result.geocodes[0].location;
+                mainCompanyPoint = point;
                 console.log(point);
-
                 var marker = new AMap.Marker();
                 map.add(marker);
                 marker.setPosition(point);
@@ -98,7 +103,7 @@ $('#boxTabs>ul>li').eq(1).on('click',function(){
                 //给标记添加事件，让其显示信息窗格，显示公司信息
                 AMap.event.addListener(marker,'click',function(){
                     console.log(marker.getPosition());
-                    inforShow(marker);
+                    inforShow(marker,company);
                 })
                 return point;
             }
@@ -125,7 +130,65 @@ $('#boxTabs>ul>li').eq(1).on('click',function(){
         var tool = new AMap.ToolBar();
         map.addControl(tool);
     });
-    //浏览器定位
+ 
+
+    //该函数用于将其他公司地址转化为高德地图经纬度坐标
+    //异步函数
+    function getOtherCompanyAddress(address,targetCompany){
+        var geocoder = new AMap.Geocoder();
+        geocoder.getLocation(address,function(status,result){
+            if(status === 'complete'&&result.geocodes.length){
+                console.log("地址转化成功："+result);
+                var point = result.geocodes[0].location;
+                console.log(point);
+                //新建标记
+                var marker = new AMap.Marker();
+                map.add(marker);
+                marker.setPosition(point);
+                //给标记添加事件，让其显示信息窗格，显示公司信息
+                AMap.event.addListener(marker,'click',function(){
+                    console.log(marker.getPosition());
+                    inforShow(marker,targetCompany);
+                })
+                //新建同主公司的连线
+                var path = [
+                    new AMap.LngLat(point.lng,point.lat),
+                    new AMap.LngLat(mainCompanyPoint.lng,mainCompanyPoint.lat)
+                ] ;
+                var polyline = new AMap.Polyline({
+                    path: path,  
+                    borderWeight: 0.1, // 线条宽度，默认为 1
+                    strokeColor: 'blue', // 线条颜色
+                    strokeWeight:1,
+                });
+                map.add(polyline);
+                return point;
+            }
+            if(status === 'err'){
+                console.log("发生错误:"+JSON.stringify(result));
+            }
+        });
+    }
+    $('#findOtherBtn').click(function(){
+        var url = "http://106.14.151.119:3000/api/search?legalPerson="+company.legalPerson;
+        //获取法人名字，发送查找该法人旗下的公司的请求
+        $.get(url,function(data,status){
+            //获取到公司数据
+            if(data[0]['数量'] == 1){
+                alert("暂无其他该法人下的企业");
+                return;
+            }
+            console.log(data);
+            //在地图上查找这些公司并给他们标点，添加marker
+            for(var i = 1;i<data.length;i++){
+                //转化地址并添加标记
+                getOtherCompanyAddress(data[i].address,data[i]);
+            }
+            //地图缩放到全局
+            map.setZoom(7);
+        })
+    })
+       //浏览器定位
     // map.plugin('AMap.Geolocation',function(){
     //     var geolocation = new AMap.Geolocation({
     //         // 是否使用高精度定位，默认：true
@@ -153,18 +216,6 @@ $('#boxTabs>ul>li').eq(1).on('click',function(){
     //         console.log("定位出错")
     //     }
     // });
-
-    // $('#findOtherBtn').click(function(){
-    //     var url = "http://106.14.151.119:3000/api/findOne?legalPerson ="+company.legalPerson;
-    //     //获取法人名字，发送查找该法人旗下的公司的请求
-    //     $.get(url,function(data,status){
-    //         //获取到公司数据
-    //         console.log(data);
-    //         //在地图上查找这些公司并给他们标点，添加marker
-            
-    //         //给这些marker连线
-    //     })
-    // })
 });
 
 
