@@ -73,6 +73,9 @@ a{
 .nav li a{
     color: #fff;
 }
+.nav li a:hover{
+    background-color: #292929;
+}
 
 
 /* 搜索栏 */

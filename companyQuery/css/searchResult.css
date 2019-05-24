@@ -75,6 +75,9 @@ a{
 .nav li a{
     color: #fff;
 }
+.nav li a:hover{
+    background-color: #292929;
+}
 #headerForm{
     position: absolute;
     top: 10px;
@@ -145,8 +148,9 @@ a{
 /* bootstrap分页器 */
 #fenye{
     position: relative;
+    top: 10px;
     bottom: 30px;
-    left: 40%;
+    left: 35%;
 
 }
 

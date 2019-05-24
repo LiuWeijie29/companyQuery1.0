@@ -75,6 +75,9 @@ a{
 .nav li a{
     color: #fff;
 }
+.nav li a:hover{
+    background-color: #292929;
+}
 #headerForm{
     position: absolute;
     top: 10px;

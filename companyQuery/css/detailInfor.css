@@ -4,7 +4,7 @@ body{
     background-color:rgb(39,39,39);
     background: url("../img/1.jpg") no-repeat ;
     background-size:cover; 
-    min-width: 1280px;
+    min-width: 1480px;
 }
 li{
     list-style: none;
@@ -83,7 +83,9 @@ a{
 .nav li a{
     color: #fff;
 }
-
+.nav li a:hover{
+    background-color: #292929;
+}
 
 /* 中间内容部分 */
 #content{
@@ -119,6 +121,9 @@ a{
     font-size: 18px;
     margin-bottom:5px;
     color:rgb(39,39,39);
+}
+#address{
+    white-space:normal;
 }
 
 
@@ -178,10 +183,17 @@ table .attr{
 #businessScope,#dataSourse{
     
 }
-
+/* 地图 */
 #mapBox{
     height: 800px;
     width: 100%;
+}
+.input-card {
+    position: absolute;
+    width: 100px;
+    top: 10px;
+    bottom: auto;
+    z-index: 50;
 }
 #notFindPos{
     text-align: center;
@@ -205,7 +217,16 @@ table .attr{
 #notFindPos:hover{
     color: #fff;
 }
+.content-window-card{
+    position: relative;
+    width: 23rem;
+    padding: 0.75rem 0 0 1.25rem;
+    box-shadow: none;
+    bottom: 0;
+    left: 0;
+}
 
+/* 图谱 */
 #atlasBox{
     height: 800px;
     width: 100%;

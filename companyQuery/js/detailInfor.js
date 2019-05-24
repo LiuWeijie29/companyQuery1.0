@@ -48,13 +48,31 @@ $('#boxTabs>ul>li').click(function(){
     $('.contentBox').eq(index).addClass('showBox').removeClass('hideBox').siblings('.contentBox').addClass('hideBox').removeClass('showBox');
 })
 
+
+
 //地图模块
 //点击tabs栏切换按钮加载地图模块
 $('#boxTabs>ul>li').eq(1).on('click',function(){
     var map = new AMap.Map('mapBox', {
-        // center:
-        zoom:11
-     });
+        zoom:11,
+        rotateEnable: true,
+    });
+    getAddressLocation(company.name);//定位企业名
+    var inforWindow;
+
+    function inforShow(marker){
+        var info=[];
+        info.push("<div class='input-card content-window-card'><div><img style=\"float:left;\" src=\" https://webapi.amap.com/images/autonavi.png \"/></div> ");
+        info.push("<div style=\"padding:7px 0px 0px 0px;\"><h4>"+company.name+"</h4>");
+        info.push("<p class='input-item'>电话 : 010-84107000   邮编 : 100102</p>");
+        info.push("<p class='input-item'>地址 :北京市朝阳区望京阜荣街10号首开广场4层</p></div></div>");
+
+        inforWindow = new AMap.InfoWindow({
+            content:info.join(""), //使用默认信息窗体框样式，显示信息内容
+        })
+
+        inforWindow.open(map,marker.getPosition());
+    }
      //加载地图后标记到定位点。将企业的名称转化为地图坐标并定位
      function getAddressLocation(name){
         var geocoder =  new AMap.Geocoder();
@@ -63,10 +81,16 @@ $('#boxTabs>ul>li').eq(1).on('click',function(){
                 console.log("地址转化成功："+result);
                 var point = result.geocodes[0].location;
                 console.log(point);
+
                 var marker = new AMap.Marker();
                 map.add(marker);
                 marker.setPosition(point);
                 map.setFitView(marker);
+                //给标记添加事件，让其显示信息窗格，显示公司信息
+                AMap.event.addListener(marker,'click',function(){
+                    console.log(marker.getPosition());
+                    inforShow(marker);
+                })
                 return point;
             }
             if(status === 'err'){
@@ -74,32 +98,58 @@ $('#boxTabs>ul>li').eq(1).on('click',function(){
             }
         });
     }
-     var addressPoint = getAddressLocation(company.name);//定位企业名
-     
-     //某些企业已经注销或未登记，地图上搜索不到该企业，则以改企业地址为定位点
-     $('#notFindPos').on('click',function(){
-         var addressPoint = getAddressLocation(company.address);
+    
+    // 某些企业已经注销或未登记，地图上搜索不到该企业，则以改企业地址为定位点
+    $('#notFindPos').on('click',function(){
+        getAddressLocation(company.address);
+    });
+
+    //添加比例尺
+     map.plugin('AMap.Scale',function(){
+         var scale = new AMap.Scale();
+         map.addControl(scale);
      });
-     
+     //添加工具栏
+     map.plugin('AMap.ToolBar',function(){
+        var tool = new AMap.ToolBar();
+        map.addControl(tool);
+    });
+    //浏览器定位
+    // map.plugin('AMap.Geolocation',function(){
+    //     var geolocation = new AMap.Geolocation({
+    //         // 是否使用高精度定位，默认：true
+    //         enableHighAccuracy: true,
+    //         // 设置定位超时时间，默认：无穷大
+    //         timeout: 10000,
+    //         // 定位按钮的停靠位置的偏移量，默认：Pixel(10, 20)
+    //         buttonOffset: new AMap.Pixel(10, 20),
+    //         //  定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+    //         zoomToAccuracy: true,     
+    //         //  定位按钮的排放位置,  RB表示右下
+    //         buttonPosition: 'RB'
+    //     })
+    //     map.addControl(geolocation);
+    //     geolocation.getCurrentPosition();
+    //     AMap.event.addListener(geolocation, 'complete', onComplete)
+    //     AMap.event.addListener(geolocation, 'error', onError)
+
+    //     function onComplete (data) {
+    //         console.log(data)
+    //     }
+
+    //     function onError (data) {
+    //         // 定位出错
+    //         console.log("定位出错")
+    //     }
+    // });
 });
 
-// //企业图谱轮播栏
-// var mySwiper = new Swiper ('.swiper-container', {
-//     direction: 'horizontal',//横向
-//     autoplay:true,
-//     loop: true,
-//     speed:300,
-//     initialSlide :1,//初始化指定index
-//     // 如果需要分页器
-//     pagination: '.swiper-pagination',
-    
-//     // 如果需要前进后退按钮
-//     nextButton: '.swiper-button-next',
-//     prevButton: '.swiper-button-prev',
-//     width:1100,
-//     height:750
 
-//   })        
+
+
+
+
+
 
 //企业图谱
 function dataViewShow(){
