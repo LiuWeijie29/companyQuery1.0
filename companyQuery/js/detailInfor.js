@@ -1,7 +1,7 @@
 var company = {};
 var mychart;
 $(function(){
-    var id = $.query.get("id");
+    var id  = $.query.get("id");
     var url = "http://106.14.151.119:3000/api/findOne?id="+id;
     //发送数据请求
     $.get(url,function(data,status){
@@ -23,18 +23,19 @@ function addData(data){
     $('#mail').text(data[0].mail);//邮箱
     $('#phone').text(data[0].phone);//联系方式
     $('#morePhone').text(data[0].morePhone);//更多联系方式
-    company.name = data[0].name;
-    company.legalPerson = data[0].legalPerson;
-    company.address = data[0].address;;
-    company.registeredCapital= data[0].capital;
-    company.RCapital= data[0].capital;
-    company.creditCode= data[0].creditCode;
-    company.setupTime= data[0].setupTime;
-    company.scope= data[0].scope;
-    company.province= data[0].province;
-    company.mail= data[0].mail;
-    company.phone= data[0].phone;
-    company.morePhone= data[0].morePhone;
+    company.name              = data[0].name;
+    company.legalPerson       = data[0].legalPerson;
+    company.address           = data[0].address;;
+    company.registeredCapital = data[0].capital;
+    company.RCapital          = data[0].capital;
+    company.creditCode        = data[0].creditCode;
+    company.setupTime         = data[0].setupTime;
+    company.scope             = data[0].scope;
+    company.province          = data[0].province;
+    company.mail              = data[0].mail;
+    company.phone             = data[0].phone;
+    company.morePhone         = data[0].morePhone;
+
 }
 
 
@@ -52,30 +53,38 @@ $('#boxTabs>ul>li').click(function(){
 
 //地图模块
 //点击tabs栏切换按钮加载地图模块
+var map;
 $('#boxTabs>ul>li').eq(1).on('click',function(){
-    var map = new AMap.Map('mapBox', {
-        zoom:11,
+    map = new AMap.Map('mapBox', {
+        zoom        : 11,
         rotateEnable: true,
     });
-    getAddressLocation(company.name);//定位企业名
-    var inforWindow;
+    getAddressLocation(company.address);//以企业地址为依据定位
+    var inforWindow;//信息窗格
 
     function inforShow(marker){
-        var info=[];
+        var info = [];
         info.push("<div class='input-card content-window-card'><div><img style=\"float:left;\" src=\" https://webapi.amap.com/images/autonavi.png \"/></div> ");
         info.push("<div style=\"padding:7px 0px 0px 0px;\"><h4>"+company.name+"</h4>");
-        info.push("<p class='input-item'>电话 : 010-84107000   邮编 : 100102</p>");
-        info.push("<p class='input-item'>地址 :北京市朝阳区望京阜荣街10号首开广场4层</p></div></div>");
+        info.push("<p class='input-item'>企业法人 :"+ company.legalPerson);
+        info.push("<p class='input-item'>联系电话 :"+ company.phone +"/"+company.morePhone);
+        info.push("<p class='input-item'>社会统一信用代码 :"+ company.creditCode);
+        info.push("<p class='input-item'>成立日期 :"+ company.data);
+        info.push("<p class='input-item'>注册资本 :"+ company.capital);
+        info.push("<p class='input-item'>地址 :"+company.address+"</p>");
+        info.push("<p class='input-item'>经营范围 :"+company.scope+"</p></div></div>");
 
         inforWindow = new AMap.InfoWindow({
-            content:info.join(""), //使用默认信息窗体框样式，显示信息内容
+            //设置位置锚点
+            anchor : 'bottom-left',
+            content: info.join(""),   //使用默认信息窗体框样式，显示信息内容
         })
 
         inforWindow.open(map,marker.getPosition());
     }
      //加载地图后标记到定位点。将企业的名称转化为地图坐标并定位
      function getAddressLocation(name){
-        var geocoder =  new AMap.Geocoder();
+        var geocoder = new AMap.Geocoder();
         geocoder.getLocation(name,function(status,result){
             if(status === 'complete'&&result.geocodes.length){
                 console.log("地址转化成功："+result);
@@ -99,10 +108,12 @@ $('#boxTabs>ul>li').eq(1).on('click',function(){
         });
     }
     
-    // 某些企业已经注销或未登记，地图上搜索不到该企业，则以改企业地址为定位点
+    // 若定位失败则以改企业名为定位依据
     $('#notFindPos').on('click',function(){
-        getAddressLocation(company.address);
+        getAddressLocation(company.name);
     });
+
+
 
     //添加比例尺
      map.plugin('AMap.Scale',function(){
@@ -142,10 +153,19 @@ $('#boxTabs>ul>li').eq(1).on('click',function(){
     //         console.log("定位出错")
     //     }
     // });
+
+    // $('#findOtherBtn').click(function(){
+    //     var url = "http://106.14.151.119:3000/api/findOne?legalPerson ="+company.legalPerson;
+    //     //获取法人名字，发送查找该法人旗下的公司的请求
+    //     $.get(url,function(data,status){
+    //         //获取到公司数据
+    //         console.log(data);
+    //         //在地图上查找这些公司并给他们标点，添加marker
+            
+    //         //给这些marker连线
+    //     })
+    // })
 });
-
-
-
 
 
 
@@ -153,7 +173,7 @@ $('#boxTabs>ul>li').eq(1).on('click',function(){
 
 //企业图谱
 function dataViewShow(){
-    mychart = echarts.init(document.getElementById('dataView')); //mychart是全局变量
+    mychart = echarts.init(document.getElementById('dataView'));  //mychart是全局变量
     // 指定图表的配置项和数据
     option = {
         title: {
@@ -168,21 +188,21 @@ function dataViewShow(){
             }
         },
         toolbox:{
-            show : true,
-            feature : {//启用功能
-                dataView: {show:true},//数据窗口
-                restore : {show: true},//restore，还原，复位原始图表
+            show   : true,
+            feature: {//启用功能
+                dataView: {show:true},    //数据窗口
+                restore : {show: true},   //restore，还原，复位原始图表
             }
         },
         animationDurationUpdate: 1500,
-        animationEasingUpdate: 'quinticInOut',
-        series : [
+        animationEasingUpdate  : 'quinticInOut',
+        series                 : [
             {
                 type: 'graph',
                 // layout: 'force',
-                layout: 'circular',
+                layout    : 'circular',
                 symbolSize: 90,
-                roam: 'true',
+                roam      : 'true',
                 // force: {
                 //     edgeLength: [100,200],//线的长度，这个距离也会受 repulsion，支持设置成数组表达边长的范围
                 //     repulsion: 100//节点之间的斥力因子。值越大则斥力越大
@@ -194,13 +214,13 @@ function dataViewShow(){
                         // formatter:function(e){
                         //     return e.value+": "+e.name
                         // }       //标签内容格式器。模板变量有 {a}、{b}、{c}，分别表示系列名，数据名，数据值。
-                        formatter:'{c}'
+                        formatter: '{c}'
                     }
                 },
 
-                edgeSymbol: ['circle', 'arrow'],
+                edgeSymbol    : ['circle', 'arrow'],
                 edgeSymbolSize: [1, 10],
-                edgeLabel: {
+                edgeLabel     : {
                     normal: {
                         textStyle: {
                             fontSize: 20
@@ -212,69 +232,69 @@ function dataViewShow(){
                         color: 'lightblue'
                     }
                 },//圆圈样式
-                symbol:"circle",       //图形形状 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow'
-                symbolSize: 100,//圈圈大小
+                symbol    : "circle",   //图形形状 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow'
+                symbolSize: 100,        //圈圈大小
 
 
                 data: [{
-                    name: company.name,
-                    value:'公司名',
+                    name      : company.name,
+                    value     : '公司名',
                     symbolSize: 100,
-                    itemStyle: {
+                    itemStyle : {
                         normal: {
-                            color:'darkblue'
+                            color: 'darkblue'
                         }
                     }
 
                 }, {
-                    name: company.legalPerson,
-                    value:'企业法人',
+                    name     : company.legalPerson,
+                    value    : '企业法人',
                     itemStyle: {
                         normal: {
-                            color:'darkblue'
+                            color: 'darkblue'
                         }
                     }
                 }, {
-                    name: company.address,
-                    value:'公司地址',
+                    name : company.address,
+                    value: '公司地址',
                     
                 }, {
-                    name: company.registeredCapital,
-                    value:'注册资本',
+                    name : company.registeredCapital,
+                    value: '注册资本',
                     
                 },{
-                    name: company.creditCode,
-                    value:'信用代码',
+                    name : company.creditCode,
+                    value: '信用代码',
                     
                 },{
-                    name: company.setupTime,
-                    value:'成立时间',
+                    name : company.setupTime,
+                    value: '成立时间',
                     
                 },{
-                    name: company.scope,
-                    value:'经营范围',
+                    name : company.scope,
+                    value: '经营范围',
                     
                 },{
-                    name: company.province,
-                    value:'所属省份',
+                    name : company.province,
+                    value: '所属省份',
                     
                 },{
-                    name: company.mail,
-                    value:'邮箱',
+                    name : company.mail,
+                    value: '邮箱',
                     
                 },{
-                    name: company.phone,
-                    value:'联系方式',
+                    name : company.phone,
+                    value: '联系方式',
                     
                 },{
-                    name: company.morePhone,
-                    value:'更多联系方式',
+                    name : company.morePhone,
+                    value: '更多联系方式',
                     
                 }],
                 // links: [],
                 links: [{
                     source: company.legalPerson,
-                    target: company.name,       
+                    target: company.name,
                 }, {
                     source: company.address,
                     target: company.name,
@@ -285,7 +305,7 @@ function dataViewShow(){
                     source: company.phone,
                     target: company.name
                 }, {
-                    source:  company.scope,
+                    source: company.scope,
                     target: company.name
                 }, {
                     source: company.province,
@@ -302,8 +322,8 @@ function dataViewShow(){
                 }],
                 lineStyle: {
                     normal: {
-                        opacity: 0.9,
-                        width: 2,
+                        opacity  : 0.9,
+                        width    : 2,
                         curveness: 0
                     }
                 }
@@ -337,11 +357,11 @@ function clickLegalPerson(e){
         var searchData = data;
         console.log(searchData);
         var dataArr = [{
-            name: e.name,
-            value:'企业法人',
+            name     : e.name,
+            value    : '企业法人',
             itemStyle: {
                 normal: {
-                    color:'darkblue'
+                    color: 'darkblue'
                 }
             },
             symbolSize: 150,
@@ -353,18 +373,18 @@ function clickLegalPerson(e){
         for(var i = 1;i<searchData.length;i++){
             console.log(searchData[i].name)
             var companyObj = {
-                name: searchData[i].name,
-                value:'公司名',
+                name      : searchData[i].name,
+                value     : '公司名',
                 symbolSize: 100,
-                itemStyle: {
+                itemStyle : {
                     normal: {
-                        color:'darkblue'
+                        color: 'darkblue'
                     }
                 },
             }
             var linkObj = {
                 source: e.name,
-                target: searchData[i].name,       
+                target: searchData[i].name,
             }
             dataArr.push(companyObj)
             linkArr.push(linkObj)
@@ -386,33 +406,33 @@ function clickLegalPerson(e){
                 }
             },
             toolbox:{
-                show : true,
-                feature : {//启用功能
-                    restore : {show: true},//restore，还原，复位原始图表
-                    dataView: {show:true},//数据窗口
+                show   : true,
+                feature: {//启用功能
+                    restore : {show: true},   //restore，还原，复位原始图表
+                    dataView: {show:true},    //数据窗口
                 },
                 
             },
             animationDurationUpdate: 2500,
-            animationEasingUpdate: 'quinticInOut',
-            series : [
+            animationEasingUpdate  : 'quinticInOut',
+            series                 : [
                 {
-                    name:'企业法人',
-                    type: 'graph',
-                    layout: 'circular',
-                    symbolSize: 90,
-                    roam: true,
-                    focusNodeAdjacency:true,
-                    label: {
+                    name              : '企业法人',
+                    type              : 'graph',
+                    layout            : 'circular',
+                    symbolSize        : 90,
+                    roam              : true,
+                    focusNodeAdjacency: true,
+                    label             : {
                         normal: {
-                            show: true,
-                            formatter:'{c}'       //标签内容格式器。模板变量有 {a}、{b}、{c}，分别表示系列名，数据名，数据值。
+                            show     : true,
+                            formatter: '{c}'  //标签内容格式器。模板变量有 {a}、{b}、{c}，分别表示系列名，数据名，数据值。
                         }
                     },
     
-                    edgeSymbol: ['circle', 'arrow'],
+                    edgeSymbol    : ['circle', 'arrow'],
                     edgeSymbolSize: [1, 10],
-                    edgeLabel: {
+                    edgeLabel     : {
                         normal: {
                             textStyle: {
                                 fontSize: 20
@@ -424,18 +444,18 @@ function clickLegalPerson(e){
                             color: 'lightblue'
                         }
                     },//圆圈样式
-                    symbol:"circle", 
-                    symbolSize: 100,//圈圈大小
+                    symbol    : "circle",
+                    symbolSize: 100,        //圈圈大小
 
 
-                    data:dataArr,//数据
-                    links: linkArr,//关系
+                    data : dataArr,   //数据
+                    links: linkArr,   //关系
 
 
                     lineStyle: {
                         normal: {
-                            opacity: 0.9,
-                            width: 2,
+                            opacity  : 0.9,
+                            width    : 2,
                             curveness: 0
                         }
                     }
@@ -452,7 +472,7 @@ function clickCompanyName(e){
     $.get('http://106.14.151.119:3000/api/search?name='+e.name).done(function(data){
         console.log("搜索："+e.name);
         mychart.hideLoading();
-        var searchData = data[1];//获取以name准确查询到的公司数据
+        var searchData = data[1];  //获取以name准确查询到的公司数据
         console.log(searchData);
         var newOption = {
             title: {
@@ -469,22 +489,22 @@ function clickCompanyName(e){
             },
             //工具箱
             toolbox:{
-                show : true,
-                feature : {//启用功能
-                    restore : {show: true},//restore，还原，复位原始图表
-                    dataView: {show:true},//数据窗口
+                show   : true,
+                feature: {//启用功能
+                    restore : {show: true},   //restore，还原，复位原始图表
+                    dataView: {show:true},    //数据窗口
                 },
                 
             },
             animationDurationUpdate: 1500,
-            animationEasingUpdate: 'quinticInOut',
-            series : [
+            animationEasingUpdate  : 'quinticInOut',
+            series                 : [
                 {
                     type: 'graph',
                     // layout: 'force',
-                    layout: 'circular',
+                    layout    : 'circular',
                     symbolSize: 90,
-                    roam: 'true',
+                    roam      : 'true',
                     // force: {
                     //     edgeLength: [100,200],//线的长度，这个距离也会受 repulsion，支持设置成数组表达边长的范围
                     //     repulsion: 100//节点之间的斥力因子。值越大则斥力越大
@@ -492,14 +512,14 @@ function clickCompanyName(e){
                     // draggable: true,//指示节点是否可以拖动
                     label: {
                         normal: {
-                            show: true,
-                            formatter:'{c}'       //标签内容格式器。模板变量有 {a}、{b}、{c}，分别表示系列名，数据名，数据值。
+                            show     : true,
+                            formatter: '{c}'  //标签内容格式器。模板变量有 {a}、{b}、{c}，分别表示系列名，数据名，数据值。
                         }
                     },
     
-                    edgeSymbol: ['circle', 'arrow'],
+                    edgeSymbol    : ['circle', 'arrow'],
                     edgeSymbolSize: [1, 10],
-                    edgeLabel: {
+                    edgeLabel     : {
                         normal: {
                             textStyle: {
                                 fontSize: 20
@@ -511,69 +531,69 @@ function clickCompanyName(e){
                             color: 'lightblue'
                         }
                     },//圆圈样式
-                    symbol:"circle",       //图形形状 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow'
-                    symbolSize: 100,//圈圈大小
+                    symbol    : "circle",   //图形形状 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow'
+                    symbolSize: 100,        //圈圈大小
     
     
                     data: [{
-                        name: searchData.name,
-                        value:'公司名',
+                        name      : searchData.name,
+                        value     : '公司名',
                         symbolSize: 100,
-                        itemStyle: {
+                        itemStyle : {
                             normal: {
-                                color:'darkblue'
+                                color: 'darkblue'
                             }
                         }
     
                     }, {
-                        name: searchData.legalPerson,
-                        value:'企业法人',
+                        name     : searchData.legalPerson,
+                        value    : '企业法人',
                         itemStyle: {
                             normal: {
-                                color:'darkblue'
+                                color: 'darkblue'
                             }
                         }
                     }, {
-                        name: searchData.address,
-                        value:'公司地址',
+                        name : searchData.address,
+                        value: '公司地址',
                         
                     }, {
-                        name: searchData.registeredCapital,
-                        value:'注册资本',
+                        name : searchData.registeredCapital,
+                        value: '注册资本',
                         
                     },{
-                        name: searchData.creditCode,
-                        value:'信用代码',
+                        name : searchData.creditCode,
+                        value: '信用代码',
                         
                     },{
-                        name: searchData.setupTime,
-                        value:'成立时间',
+                        name : searchData.setupTime,
+                        value: '成立时间',
                         
                     },{
-                        name: searchData.scope,
-                        value:'经营范围',
+                        name : searchData.scope,
+                        value: '经营范围',
                         
                     },{
-                        name: searchData.province,
-                        value:'所属省份',
+                        name : searchData.province,
+                        value: '所属省份',
                         
                     },{
-                        name: searchData.mail,
-                        value:'邮箱',
+                        name : searchData.mail,
+                        value: '邮箱',
                         
                     },{
-                        name: searchData.phone,
-                        value:'联系方式',
+                        name : searchData.phone,
+                        value: '联系方式',
                         
                     },{
-                        name: searchData.morePhone,
-                        value:'更多联系方式',
+                        name : searchData.morePhone,
+                        value: '更多联系方式',
                         
                     }],
                     // links: [],
                     links: [{
                         source: searchData.legalPerson,
-                        target: searchData.name,       
+                        target: searchData.name,
                     }, {
                         source: searchData.address,
                         target: searchData.name,
@@ -584,7 +604,7 @@ function clickCompanyName(e){
                         source: searchData.phone,
                         target: searchData.name
                     }, {
-                        source:  searchData.scope,
+                        source: searchData.scope,
                         target: searchData.name
                     }, {
                         source: searchData.province,
@@ -601,8 +621,8 @@ function clickCompanyName(e){
                     }],
                     lineStyle: {
                         normal: {
-                            opacity: 0.9,
-                            width: 2,
+                            opacity  : 0.9,
+                            width    : 2,
                             curveness: 0
                         }
                     }

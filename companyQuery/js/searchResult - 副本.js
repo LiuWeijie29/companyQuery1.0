@@ -15,7 +15,7 @@ function requestParam(paramType,param,pageIndex){
     $.get(url,function(data,status){
         resultData = data;
         console.log(resultData);
-        resultNumber = data[0]['数量'];//返回的结果数量
+        resultNumber = data[0]['数量'];  //返回的结果数量
         $('#resultNumber').text(resultNumber);
         //动态创建列表
         createList(resultNumber);
@@ -35,7 +35,7 @@ $(function(){
     }
     //按地址搜索
     if($.query.get("address")!=''){
-        paramType = 'address';
+        paramType    = 'address';
         paramAddress = $.query.get("address");
         console.log("获取到的数据："+ paramAddress);
         requestParam(paramType,paramAddress,1);
@@ -43,15 +43,15 @@ $(function(){
     //按联系方式搜索
     if($.query.get("phone")!=''){
         //获取传递过来的phone值
-        paramType = 'phone';
-        paramPhone= $.query.get("phone");
+        paramType  = 'phone';
+        paramPhone = $.query.get("phone");
         console.log("获取到的数据："+ paramPhone);
         requestParam(paramType,paramPhone,1);
         
     }
     //按法人股东名搜索
     if($.query.get("legalPerson")!=''){
-        paramType = 'legalPerson';
+        paramType        = 'legalPerson';
         paramLegalPerson = $.query.get("legalPerson");
         console.log("获取到的数据："+ paramLegalPerson);
         requestParam(paramType,paramLegalPerson,1);
@@ -59,7 +59,7 @@ $(function(){
     }
     //按统一社会信用代码搜索
     if($.query.get("creditCode")!=''){
-        paramType = 'creditCode';
+        paramType       = 'creditCode';
         paramCreditCode = $.query.get("creditCode");
         console.log("获取到的数据："+ paramCreditCode);
         requestParam(paramType,paramCreditCode,1);
@@ -67,7 +67,7 @@ $(function(){
     //按行业搜索
     if($.query.get("scope")!=''){
         //获取传递过来的name值
-        paramType = 'scope';
+        paramType  = 'scope';
         paramScope = $.query.get("scope");
         console.log("获取到的数据："+ paramScope);
         requestParam(paramType,paramScope,1);
@@ -97,20 +97,20 @@ function listDOM(){
 
 //往空盒子里面塞数据
 function addDataToList(resultData){
-    var imgNode = $(" <img src='../img/企业.png' width='160px' height='160px' alt='企业'>");
+    var imgNode = $(" <img src='../img/company.png' width='160px' height='160px' alt='企业'>");
     $('.imgBox').append(imgNode);
     for(var i = 1;i<resultData.length;i++){
-        document.getElementsByClassName("titleName")[i-1].innerHTML=resultData[i].name;
-        document.getElementsByClassName("legalPersonName")[i-1].innerHTML=resultData[i].legalPerson;
-        document.getElementsByClassName("registeredCapital")[i-1].innerHTML=resultData[i].capital;
-        document.getElementsByClassName("address")[i-1].innerHTML=resultData[i].address;
-        companyObj[resultData[i].name] = resultData[i]._id;
+        document.getElementsByClassName("titleName")[i-1].innerHTML         = resultData[i].name;
+        document.getElementsByClassName("legalPersonName")[i-1].innerHTML   = resultData[i].legalPerson;
+        document.getElementsByClassName("registeredCapital")[i-1].innerHTML = resultData[i].capital;
+        document.getElementsByClassName("address")[i-1].innerHTML           = resultData[i].address;
+        companyObj                     [resultData[i].name]                 = resultData[i]._id;
     }
     console.log(companyObj);
 }
 
 //点击列表标题进入公司详情页：
 function toDetailPage(name){
-    var url = "../html/detailInfor.html"+'?id='+encodeURI(companyObj[name]);
-    location.href = url;
+    var url           = "../html/detailInfor.html"+'?id='+encodeURI(companyObj[name]);
+        location.href = url;
 }

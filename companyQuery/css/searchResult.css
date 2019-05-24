@@ -1,10 +1,10 @@
 body{
-    margin: 0px;
-    padding: 0px;
-    background-color:rgb(39,39,39);
-    background: url("../img/1.jpg") no-repeat ;
-    background-size:cover; 
-    min-width: 1280px;
+    margin          : 0px;
+    padding         : 0px;
+    background-color: rgb(39,39,39);
+    background      : url("../img/1.jpg") no-repeat ;
+    background-size : cover;
+    min-width       : 1480px;
 }
 li{
     list-style: none;
@@ -13,7 +13,7 @@ li{
     float: left;
 }
 .right{
-    float:right;
+    float: right;
 }
 center{
     margin: 0 auto;
@@ -23,51 +23,51 @@ h5{
 }
 a{
     text-decoration: none;
-    padding: 0px;
+    padding        : 0px;
 }
 .container-fluid{
     padding: 0px;
-    margin: 0px;
+    margin : 0px;
 }
 
 /*头部*/
 #header{
-    height: 55px;
-    width: 100%;
-    margin: 0px;
-    color: white;
+    height          : 55px;
+    width           : 100%;
+    margin          : 0px;
+    color           : white;
     background-color: #000;
 }
 .headerIcon{
-    margin-right:5px; 
-    margin-bottom:3px; 
-    height: 23px;
-    width: 23px;
-    display: inline;
+    margin-right : 5px;
+    margin-bottom: 3px;
+    height       : 23px;
+    width        : 23px;
+    display      : inline;
 }
 #headerForm{
     position: absolute;
-    top: 10px;
-    left:400px; 
-    display:inline-block;
+    top     : 10px;
+    left    : 400px;
+    display : inline-block;
 }
 #title{
-    margin-top:0px;
+    margin-top   : 0px;
     margin-bottom: 0px;
-    margin-left: 160px;
-    float: left;
-    font-size: 22px;
-    line-height: 55px;
-    cursor: pointer;
+    margin-left  : 160px;
+    float        : left;
+    font-size    : 22px;
+    line-height  : 55px;
+    cursor       : pointer;
 }
 .nav{
     margin-right: 140px;
-    float: right;
-    list-style: none;
-    font-size: 18px;
+    float       : right;
+    list-style  : none;
+    font-size   : 18px;
 }
 .nav li{
-    float: left;
+    float : left;
     margin: 5px 10px;
     height: 100%;
     
@@ -80,66 +80,66 @@ a{
 }
 #headerForm{
     position: absolute;
-    top: 10px;
-    left:400px; 
-    display:inline-block;
+    top     : 10px;
+    left    : 400px;
+    display : inline-block;
 }
 #headerSearch{
     background-color: lightblue;
 }
 #headerSearch:hover{
-    background-color:rgb(139, 200,220);
-    cursor: pointer;
+    background-color: rgb(139, 200,220);
+    cursor          : pointer;
 }
 
 
 
 /* 中间内容部分 */
 .content{
-    height: auto;
+    height    : auto;
     min-height: 1200px;
 }
 #searchResult{
-    margin: 20px auto;
-    padding: 30px;
-    width: 80%;
-    height: 150px;
+    margin          : 20px auto;
+    padding         : 30px;
+    width           : 80%;
+    height          : 150px;
     background-color: #fff;
-    box-shadow: 1px 1px 4px 1px gray;
+    box-shadow      : 1px 1px 4px 1px gray;
 }
 .inforBox{
-    margin: 20px auto;
-    padding: 20px;
-    width: 80%;
-    height: 200px;
+    margin          : 20px auto;
+    padding         : 20px;
+    width           : 80%;
+    height          : 200px;
     background-color: #fff;
-    box-shadow: 1px 1px 4px 1px gray;
+    box-shadow      : 1px 1px 4px 1px gray;
 }
 .imgBox{
-    height: 160px;
-    width: 160px;
+    height          : 160px;
+    width           : 160px;
     background-color: #000;
-    display: inline-block;
-    float: left;
+    display         : inline-block;
+    float           : left;
 }
 .titleInfor{
     margin: 0px 20px;
-    float: left;
+    float : left;
 }
 .titleInfor h3{
-    margin-top: 0px;
-    margin-bottom:20px; 
+    margin-top   : 0px;
+    margin-bottom: 20px;
 }
 .titleInfor ul{
     padding: 0px;
 }
 .titleInfor ul li{
-    font-size: 18px;
-    margin-bottom:5px;
-    color:rgb(39,39,39);
+    font-size    : 18px;
+    margin-bottom: 5px;
+    color        : rgb(39,39,39);
 }
 .titleName:hover{
-    color: lightblue;
+    color : lightblue;
     cursor: pointer;
 }
 #resultNumber{
@@ -148,35 +148,35 @@ a{
 /* bootstrap分页器 */
 #fenye{
     position: relative;
-    top: 10px;
-    bottom: 30px;
-    left: 35%;
+    top     : 10px;
+    bottom  : 30px;
+    left    : 35%;
 
 }
 
 
 /*foot部分*/
 #footer{
-    height: 300px;
+    height          : 300px;
     background-color: #000;
 }
 #foot-content{
-    width: 80%;
+    width : 80%;
     height: 250px;
     margin: 12px auto;
-    color: lightslategray;
+    color : lightslategray;
 }
 #dataSource h5{
     text-align: left;
-    margin: 6px 0px;
+    margin    : 6px 0px;
 }
 #dataSource ul{
-    padding-left: 0px;
+    padding-left : 0px;
     padding-right: 150px;
 }
 #dataSource ul li{
     text-align: left;
-    margin: 6px 0px;
+    margin    : 6px 0px;
 }
 #dataSource ul li a{
     text-decoration: none
