@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <script src="https://webapi.amap.com/maps?v=1.4.14&key=be44caee7bd64ca39c85116195e2d3a3&plugin=AMap.Geocoder"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        //地址转化器，转化地址为高德地图的经纬度
+        //1.发送请求，获取数据
+        window.onload = function(){
+            var url = 'http://106.14.151.119:3000/api/search?address=瑶湖西';
+            app.getInfor(url)
+        }
+        //vue-recource发送数据请求
+        var app = new Vue({
+                el:'#app',
+                data:{
+                    companyData:[]
+                },
+                methods:{
+                    getInfor:function(url){
+                        this.$http.get(url).then(function(res){
+                            // console.log(res.body);
+                            //调用转化器
+                            for(var i = 1;i<res.body.length;i++){
+                                getAddressLocation(res.body[i].address,res.body[i].name,function(addressData){
+                                    // this.companyData[i]=addressData;
+                                    // console.log(this.companyData[i])
+                                    console.log(addressData)
+                                    document.write(addressData)
+                                    
+                                })
+                            }
+                        },function(res){
+                            console.log(res);
+                        })
+                    },
+
+                }
+            })
+        //2.解析数据，调用转化器，导出经纬度等信息为json格式文件，异步
+        function getAddressLocation(address,companyName,callback){
+            var geocoder = new AMap.Geocoder();
+            geocoder.getLocation(address,function(status,result){
+                if(status === 'complete'&&result.geocodes.length){
+                    // console.log("地址转化成功："+result);
+                    var point = result.geocodes[0].location;
+                    // console.log(point);
+                    var addressData = {
+                        "lnglat":[point.lng,point.lat],
+                        "name":companyName,
+                        "style":2
+                    }
+                    callback(addressData);
+                    return addressData;
+                }
+                if(status === 'err'){
+                    console.log("发生错误:"+JSON.stringify(result));
+                }
+            });
+        }    
+    </script>
+</body>
+</html>

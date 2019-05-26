@@ -116,6 +116,7 @@ a{
     height: 7%;
     background-color: #000;
     text-align: center;
+    color: #efefef;
     -webkit-border-top-left-radius:8px;
     -moz-border-top-left-radius: 8px;
     -webkit-border-top-right-radius:8px;
@@ -144,14 +145,29 @@ a{
     text-align: center;
     line-height: 60px;
 }
+#tabMenu ul li:hover{
+    background-color: lightblue;
+    cursor: pointer;
+}
+.tabActive{
+    background-color: lightblue;
+}
 #tableView{
     height: 93%;
     width: 82%;
-    background-color: blue;
+    background-color:#fff;
     display: inline-block;
     float: left;
     -moz-border-bottom-right-radius: 8px;
     -webkit-border-bottom-right-radius:8px;
+}
+#tableView #viewBox{
+    width: 100%;
+    height: 100%;
+}
+#mapContainer{
+    height: 742px;
+    width: 100%;
 }
 
 
