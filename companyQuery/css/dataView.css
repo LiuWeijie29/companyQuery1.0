@@ -45,6 +45,9 @@ a{
     width: 23px;
     display: inline;
 }
+#headerLogo{
+    height: 50px;
+}
 #headerForm{
     position: absolute;
     top: 10px;
@@ -61,22 +64,33 @@ a{
     cursor: pointer;
 }
 .nav{
-    margin-right: 140px;
+    margin-right: 160px;
     float: right;
     list-style: none;
     font-size: 18px;
 }
 .nav li{
     float: left;
-    margin: 5px 10px;
+    width: 170px;
+    padding: 0px 0px;
     height: 100%;
-    
+    text-align: center;
 }
 .nav li a{
     color: #fff;
+    padding:14px 13px 15px 15px;
 }
 .nav li a:hover{
-    background-color: #292929;
+    background: -webkit-linear-gradient(left top, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* 标准的语法（必须放在最后）*/
+}
+.navSelected{
+    background: -webkit-linear-gradient(left top, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* 标准的语法（必须放在最后）*/
 }
 #headerForm{
     position: absolute;
@@ -128,6 +142,7 @@ a{
 #tabMenu{
     height: 93%;
     width: 18%;
+    background-color: rgb(41, 41, 41);
     -moz-border-bottom-left-radius: 8px;
     -webkit-border-bottom-left-radius:8px;
     /* background-color: darkgreen; */
@@ -137,6 +152,7 @@ a{
     padding: 0px;
     margin: 0px;
     width: 100%;
+    background-color: #fff;
 }
 #tabMenu ul li{
     margin: 0px;
@@ -146,16 +162,24 @@ a{
     line-height: 60px;
 }
 #tabMenu ul li:hover{
-    background-color: lightblue;
+    background: -webkit-linear-gradient(left top, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* 标准的语法（必须放在最后）*/
+    color: #fff;
     cursor: pointer;
 }
 .tabActive{
-    background-color: lightblue;
+    color: #fff;
+    background: -webkit-linear-gradient(left top, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* 标准的语法（必须放在最后）*/
 }
 #tableView{
     height: 93%;
     width: 82%;
-    background-color:#fff;
+    background-color: rgb(41, 41, 41);
     display: inline-block;
     float: left;
     -moz-border-bottom-right-radius: 8px;
@@ -166,7 +190,7 @@ a{
     height: 100%;
 }
 #mapContainer{
-    height: 742px;
+    height: 745px;
     width: 100%;
 }
 

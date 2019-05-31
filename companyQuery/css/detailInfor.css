@@ -46,6 +46,9 @@ a{
     width        : 23px;
     display      : inline;
 }
+#headerLogo{
+    height: 50px;
+}
 #headerForm{
     position: absolute;
     top     : 10px;
@@ -75,16 +78,21 @@ a{
     font-size   : 18px;
 }
 .nav li{
-    float : left;
-    margin: 5px 10px;
+    float: left;
+    width: 170px;
+    padding: 0px 0px;
     height: 100%;
-    
+    text-align: center;
 }
 .nav li a{
     color: #fff;
+    padding:15px 13px 15px 15px;
 }
 .nav li a:hover{
-    background-color: #292929;
+    background: -webkit-linear-gradient(left top, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* 标准的语法（必须放在最后）*/
 }
 
 /* 中间内容部分 */
@@ -199,11 +207,10 @@ table .attr{
     
 }
 #notFindPos{
-    text-align           : center;
-    line-height          : 50px;
+    padding: 3px 0px 6px 6px;
     position             : absolute;
-    height               : 50px;
-    width                : 50px;
+    height               : 30px;
+    width                : 30px;
     bottom               : 20px;
     right                : 20px;
     z-index              : 20;
@@ -219,6 +226,24 @@ table .attr{
 }
 #notFindPos:hover{
     color: #fff;
+}
+#changeTheme{
+    padding: 3px 0px 6px 6px;
+    position             : absolute;
+    height               : 30px;
+    width                : 30px;
+    bottom               : 60px;
+    right                : 20px;
+    z-index              : 20;
+    border               : white 1px solid;
+    border-radius        : 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius   : 3px;                        /*opera或ie9*/
+    box-shadow           : 1px 1px 2px 1px lightgray;
+    -moz-box-shadow      : 1px 1px 2px 1px lightgray;  /*firebox*/
+    -webkit-box-shadow   : 1px 1px 2px 1px lightgray;  /*webkit*/
+    background-color     : lightblue;
+    cursor               : default;
 }
 #findOtherBox{
     text-align: center;

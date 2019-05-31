@@ -11,19 +11,19 @@
 <body>
     <div id="header" class="container-fluid" >
         <h2 id="title" onclick="javascript:location.href = '../html/index.html'">
-            <img src="../img/company.png" alt="企业" class="headerIcon">企业信息查询系统
+            <img src="../img/LOGO.png" alt="企业" id="headerLogo">
         </h2>
         <form class="form-inline" id="headerForm">
-            <div class="input-group" style="width:250px;">
+            <!-- <div class="input-group" style="width:250px;">
                 <input type="text" class="form-control" id="exampleInputAmount" placeholder="输入企业关键信息" >
                 <div class="input-group-addon" id="headerSearch" ><img src="../img/search.png" width="20px" height="20px" alt="搜索"></div>
-            </div>
+            </div> -->
         </form>
         <ul class="nav">
             <li>
                 <a href="../html/index.html"><img src="../img/home.png" alt="主页" class="headerIcon">首页</a>
             </li>
-            <li>
+            <li class="navSelected">
                     <a href="./dataView.html"><img src="../img/contact.png" alt="数据可视操作" class="headerIcon">数据可视操作</a>
             </li>
             <li>
@@ -37,7 +37,7 @@
             <div id="viewHeader"><h3>数据可视化界面</h3></div>
             <div id="tabMenu">
                 <ul class="nav nav-pills nav-stacked viewTabs">
-                    <li @click='index=1' :class="{tabActive:index==1}">数据概览</li>
+                    <li @click='index=1' :class="{tabActive:index==1}">企业分布</li>
                     <li @click='index=2' :class="{tabActive:index==2}">行业划分</li>
                     <li @click='index=3' :class="{tabActive:index==3}">数据统计</li>
                     <li @click='index=4' :class="{tabActive:index==4}">暂定</li>

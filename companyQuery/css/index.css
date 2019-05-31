@@ -41,8 +41,11 @@ a{
     width: 23px;
     display: inline;
 }
+#headerLogo{
+    height: 50px;
+}
 #content{
-    height: 1300px;
+    height: 750px;
 
 }
 #footer{
@@ -66,23 +69,34 @@ a{
 }
 .nav li{
     float: left;
-    margin: 5px 10px;
+    width: 170px;
+    padding: 0px 0px;
     height: 100%;
-    
+    text-align: center;
 }
 .nav li a{
     color: #fff;
-}
-.nav li a:hover{
-    background-color: #292929;
+    padding:14px 13px 15px 15px;
 }
 
+.nav li :hover{
+    background: -webkit-linear-gradient(left top, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* 标准的语法（必须放在最后）*/
+}
+.navSelected{
+    background: -webkit-linear-gradient(left top, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* 标准的语法（必须放在最后）*/
+}
 
 /* 搜索栏 */
 
 
 .search-area{
-    height: 700px;
+    height: 750px;
     width: 100%;
     background: url("../img/2.jpg") no-repeat;
     background-size:cover; 
@@ -110,7 +124,10 @@ a{
     cursor: pointer;
 }
 .seachSelected{
-    background-color:rgb(40,96,144)!important;
+    background: -webkit-linear-gradient(left top, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* 标准的语法（必须放在最后）*/
     color:white;
 }
 
@@ -121,7 +138,12 @@ a{
 #search-ipt{
     width: 40%;
 }
-
+.btn-primary{
+    background: -webkit-linear-gradient(left top, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, rgb(1, 73, 155) , rgb(76, 133, 255)); /* 标准的语法（必须放在最后）*/
+}
 
 
 

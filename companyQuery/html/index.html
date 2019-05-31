@@ -12,14 +12,15 @@
 <body>
     <div id="header" class="container-fluid">
         <h2 id="title" onclick="javascript:location.href = '../html/index.html'">
-            <img src="../img/company.png" alt="企业" class="headerIcon">企业信息查询系统
+            <img src="../img/LOGO.png" alt="企业" id="headerLogo">
         </h2>
         <ul class="nav">
-            <li>
+            <li class="navSelected">
                 <a href="../html/index.html"><img src="../img/home.png" alt="主页" class="headerIcon">首页</a>
             </li>
             <li>
-                <a href="./dataView.html" target="blank"><img src="../img/contact.png" alt="数据可视操作" class="headerIcon">数据可视操作</a>
+                    <!-- target="blank" -->
+                <a href="./dataView.html"><img src="../img/contact.png" alt="数据可视操作" class="headerIcon">数据可视操作</a>
             </li>
             <li>
                 <a href="#about-us"><img src="../img/aboutUs.png" alt="关于我们" class="headerIcon">关于我们</a>
@@ -28,7 +29,7 @@
     </div>
     <div id="content" class="container-fluid">
         <div class="search-area">
-            <div class="form-group  text-center" >
+            <div class="form-group  text-center" id="formGroup">
                 <div class="searchTarget">
                     <ul class="searchLi">
                         <li id="companyName" class="seachSelected"><span>企业名</span></li>

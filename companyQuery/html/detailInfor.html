@@ -13,13 +13,13 @@
 <body>
     <div id="header" class="container-fluid">
         <h2 id="title" onclick="javascript:location.href = '../html/index.html'">
-            <img src="../img/company.png" alt="企业" class="headerIcon">企业信息查询系统
+            <img src="../img/LOGO.png" alt="企业" id="headerLogo">
         </h2>
         <form class="form-inline" id="headerForm">
-            <div class="input-group" style="width:250px;">
+            <!-- <div class="input-group" style="width:250px;">
                 <input type="text" class="form-control" id="exampleInputAmount" placeholder="输入企业关键信息" >
                 <div class="input-group-addon" id="headerSearch" ><img src="../img/search.png" width="20px" height="20px" alt="搜索"></div>
-            </div>
+            </div> -->
         </form>
         <ul class="nav">
             <li>
@@ -118,7 +118,8 @@
                 </table>
             </div>
             <div id="mapBox" class="hideBox contentBox" >
-                <div id="notFindPos" title="定位不到企业位置？点击重新加载"><b>？</b></div>
+                <div id="notFindPos"><img src="../img/reload16.png"  title="定位不到企业位置？点击重新加载"></div>
+                <div id="changeTheme"><img src="../img/theme.png"  title="切换主题"></div>
                 <div id="findOtherBox">
                     <input type="button" id="findOtherBtn" value="查找该法人下的相关企业" >
                 </div>

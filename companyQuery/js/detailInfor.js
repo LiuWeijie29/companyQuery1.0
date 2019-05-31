@@ -58,7 +58,9 @@ $('#boxTabs>ul>li').eq(1).on('click',function(){
     map = new AMap.Map('mapBox', {
         zoom        : 11,
         rotateEnable: true,
+        mapStyle: 'amap://styles/grey', //设置地图的显示样式
     });
+    map.setFeatures(["road","bg","building","point"]);
     getAddressLocation(company.address);//以企业地址为依据定位
     var inforWindow;//信息窗格
 
@@ -69,8 +71,8 @@ $('#boxTabs>ul>li').eq(1).on('click',function(){
         info.push("<p class='input-item'>企业法人 :"+ company.legalPerson);
         info.push("<p class='input-item'>联系电话 :"+ company.phone +"/"+company.morePhone);
         info.push("<p class='input-item'>社会统一信用代码 :"+ company.creditCode);
-        info.push("<p class='input-item'>成立日期 :"+ company.data);
-        info.push("<p class='input-item'>注册资本 :"+ company.capital);
+        // info.push("<p class='input-item'>成立日期 :"+ company.data);
+        // info.push("<p class='input-item'>注册资本 :"+ company.capital);
         info.push("<p class='input-item'>地址 :"+company.address+"</p>");
         info.push("<p class='input-item'>经营范围 :"+company.scope+"</p>");
         var url = "../html/searchResult.html?name="+company.name;
@@ -96,7 +98,11 @@ $('#boxTabs>ul>li').eq(1).on('click',function(){
                 var point = result.geocodes[0].location;
                 mainCompanyPoint = point;
                 console.log(point);
-                var marker = new AMap.Marker();
+                var marker = new AMap.Marker({
+                    icon:'../img/pos.png',
+                    title:'点击查看基本信息',
+                    offset: new AMap.Pixel(-16, -32),
+                });
                 map.add(marker);
                 marker.setPosition(point);
                 map.setFitView(marker);
@@ -117,7 +123,19 @@ $('#boxTabs>ul>li').eq(1).on('click',function(){
     $('#notFindPos').on('click',function(){
         getAddressLocation(company.name);
     });
-
+    var themeFlag = true;
+    $('#changeTheme').on('click',function(){
+        if(themeFlag == true){
+            map.setMapStyle('amap://styles/normal');
+            console.log(themeFlag)
+            themeFlag = false;
+        }
+        else if(themeFlag == false){
+            map.setMapStyle('amap://styles/grey');
+            console.log(themeFlag)
+            themeFlag = true;
+        }
+    });
 
 
     //添加比例尺
@@ -142,7 +160,11 @@ $('#boxTabs>ul>li').eq(1).on('click',function(){
                 var point = result.geocodes[0].location;
                 console.log(point);
                 //新建标记
-                var marker = new AMap.Marker();
+                var marker = new AMap.Marker({
+                    icon:'../img/pos.png',
+                    title:'点击查看基本信息',
+                    offset: new AMap.Pixel(-16,-32),
+                });
                 map.add(marker);
                 marker.setPosition(point);
                 //给标记添加事件，让其显示信息窗格，显示公司信息

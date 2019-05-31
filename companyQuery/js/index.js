@@ -1,3 +1,9 @@
+// //首页导航切换
+// $('.nav>li').click(function(){
+//     $(this).addClass('navSelected').siblings('li').removeClass('navSelected');
+//     var index = $(this).index();
+
+// });
 
 //tab栏切换
 $('.tab-list>.list-item').click(function(){
@@ -5,6 +11,7 @@ $('.tab-list>.list-item').click(function(){
     var index = $(this).index();
     $('.search-tabs>.tab-inforArea').eq(index).removeClass('hide').siblings('.tab-inforArea').addClass('hide');
 });
+
 
 //主页面搜索标签类切换
 $('.searchLi>li').click(function(){

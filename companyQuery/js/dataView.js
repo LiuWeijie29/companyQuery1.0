@@ -15,7 +15,7 @@ window.onload = gaodePosTrans();
 //地图经纬度转化函数--》地址转高德地图经纬度
 function gaodePosTrans(){
     // 1.发送请求
-    var url = 'http://106.14.151.119:3000/api/all'
+    var url = 'http://106.14.151.119:3000/api/test'
     $.get(url,function(data,status){
         // console.log(data)
         // 2.调用转化器
@@ -64,7 +64,7 @@ function gaodeMapInit(data){
         rotateEnable: true,
         mapStyle: 'amap://styles/grey',
     })
-    const layer = new Loca.ScatterPointLayer({
+    var layer = new Loca.ScatterPointLayer({
         map: map
     });
     // var data = [
