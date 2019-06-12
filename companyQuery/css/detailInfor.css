@@ -285,13 +285,17 @@ table .attr{
 #atlasBox{
     height: 800px;
     width : 100%;
+    position: relative;
+    background-color: #000;
 }
 #dataView{
-    height  : 750px;
-    width   : 1250px;
+    height  : 800px;
+    width   : 1267px;
     margin  : 0 auto;
     position: absolute;
+
 }
+
 
 .showBox{
     display: block;
@@ -304,7 +308,7 @@ table .attr{
 
 /*foot部分*/
 #footer{
-    height          : 300px;
+    height          : 200px;
     background-color: #000;
 }
 
@@ -314,7 +318,7 @@ table .attr{
 
 #foot-content{
     width : 80%;
-    height: 250px;
+    height: 170px;
     margin: 12px auto;
     color : lightslategray;
 }

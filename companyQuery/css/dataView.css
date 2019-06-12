@@ -198,12 +198,12 @@ a{
 
 /*foot部分*/
 #footer{
-    height: 300px;
+    height: 200px;
     background-color: #000;
 }
 #foot-content{
     width: 80%;
-    height: 250px;
+    height: 170px;
     margin: 12px auto;
     color: lightslategray;
 }
