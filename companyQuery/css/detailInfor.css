@@ -255,23 +255,9 @@ table .attr{
     z-index   : 2;
 
 }
-#finfindOtherBtn{
-    position             : absolute;
-    height               : 50px;
-    width                : 50px;
-    bottom               : 10px;
-    right                : 250px;
-    z-index              : 20;
-    border               : white 1px solid;
-    border-radius        : 3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius   : 3px;                        /*opera或ie9*/
-    box-shadow           : 1px 1px 2px 1px lightgray;
-    -moz-box-shadow      : 1px 1px 2px 1px lightgray;  /*firebox*/
-    -webkit-box-shadow   : 1px 1px 2px 1px lightgray;  /*webkit*/
-    background-color     : lightblue;
-    cursor               : default;
-}
+
+
+
 .content-window-card{
     position  : relative;
     width     : 23rem;

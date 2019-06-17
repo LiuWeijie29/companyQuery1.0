@@ -22,8 +22,13 @@ function requestParam(paramType,param,pageIndex){
         pageNumber   = Math.ceil(resultNumber/10);  //每页10条，计算总页数
         lastPageItem = resultNumber%10;             //最后一页的页数
         console.log(pageNumber+"页"+"最后一页有"+lastPageItem+"条");
+        if(resultNumber == 0){
+            $('#noneResult').removeClass('hideResult').siblings('h3').addClass('hideResult');
+        }else{
+            $('#resultNumber').text(resultNumber);
+        }
+        
 
-        $('#resultNumber').text(resultNumber);
         console.log(resultData);
         
         //如果是第一页
