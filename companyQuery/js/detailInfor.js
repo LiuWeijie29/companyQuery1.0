@@ -217,6 +217,9 @@ function mapFun() {
     function createLineText(point1, point2, word) {
         var textPos = point1.divideBy(2).add(point2.divideBy(2));
         var distance = Math.round(point1.distance(point2));
+        if(distance == 0){
+            return;
+        }
         text = new AMap.Text({
             text: word + '(两地相距' + distance + '米)',
             position: textPos,
