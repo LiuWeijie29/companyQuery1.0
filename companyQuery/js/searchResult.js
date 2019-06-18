@@ -41,7 +41,7 @@ function requestParam(paramType,param,pageIndex){
                 document.getElementsByClassName("legalPersonName")[i].innerHTML   = resultData[i+1].legalPerson;
                 document.getElementsByClassName("registeredCapital")[i].innerHTML = resultData[i+1].capital;
                 document.getElementsByClassName("address")[i].innerHTML           = resultData[i+1].address;
-                companyObj                     [resultData[i+1].name]             = resultData[i+1]._id;
+                companyObj                      [resultData[i+1].name]            = resultData[i+1]._id;
             }
         }//如果是中间页
         else if(pageIndex < pageNumber && pageIndex>1){
@@ -55,7 +55,7 @@ function requestParam(paramType,param,pageIndex){
                 document.getElementsByClassName("legalPersonName")[i].innerHTML   = resultData[i+1].legalPerson;
                 document.getElementsByClassName("registeredCapital")[i].innerHTML = resultData[i+1].capital;
                 document.getElementsByClassName("address")[i].innerHTML           = resultData[i+1].address;
-                companyObj                     [resultData[i+1].name]             = resultData[i+1]._id;
+                companyObj                      [resultData[i+1].name]            = resultData[i+1]._id;
             }
         }//如果是最后一页
         else if(pageIndex!=1 && pageIndex == pageNumber ){
@@ -70,12 +70,10 @@ function requestParam(paramType,param,pageIndex){
                 document.getElementsByClassName("legalPersonName")[i].innerHTML   = resultData[i+1].legalPerson;
                 document.getElementsByClassName("registeredCapital")[i].innerHTML = resultData[i+1].capital;
                 document.getElementsByClassName("address")[i].innerHTML           = resultData[i+1].address;
-                companyObj                     [resultData[i+1].name]             = resultData[i+1]._id;
+                companyObj                      [resultData[i+1].name]            = resultData[i+1]._id;
             }
         }
-        
-
-
+        fenyeControll(pageNumber,lastPageItem,page_index);//获取到数据后，加载分页//总页数,最后一页的项数，请求的页码
     })
 }
 
@@ -159,6 +157,15 @@ function toDetailPage(name){
 }
 
 //bootstrap分页控制器
-function fenyeControll(){
-    console.log(pageNumber,lastPageItem,page_index);
+function fenyeControll(pageNumber,lastPageItem,page_index){
+    console.log(pageNumber,lastPageItem,page_index);//总页数,最后一页的项数，请求的页码
+    layui.use('laypage', function(){
+        var laypage = layui.laypage;
+        
+        //执行一个laypage实例
+        laypage.render({
+            elem : 'fenye',   //注意，这里的 test1 是 ID，不用加 # 号
+            count: 50         //数据总数，从服务端得到
+        });
+      });
 };
