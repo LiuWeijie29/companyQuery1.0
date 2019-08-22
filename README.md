@@ -1,11 +1,11 @@
-# myGit
-use to learn Git tool
+companyQuery1.0是以基于高德地图进行数据可视化展示为特征的企业信息查询系统。
+利用原生JavaScript+Jquery+Bootstrap+Echarts+高德JS API搭建。
 
-1. mkdir myGit
-2. cd myGit   --> git init
-3. git add filesName
-  (use "git status" to see your git status)
-4. git commit -m "something you want to note" filesName
-5. git remote add origin yourAddress 
-  (use "git remote -v" to see your address information)
-6. git push origin master /( git clone address)
+企业数据均由nodejs爬虫爬取获得，数据源主要是天眼查，企查查等网站。
+目前企业数据集中在江西南昌。
+
+目前主要支持的功能有：
+企业基本信息查询、企业信息数据地图展示与交互、企业基本信息Echarts关系图谱展示。
+
+正在不断完善中！
+
